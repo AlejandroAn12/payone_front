@@ -1,0 +1,111 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <!-- <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Incodek - PayFast"> -->
+      <h2 class="mt-20 text-5xl text-center font-extrabold text-blue-600">PayOne</h2>
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crea tu cuenta</h2>
+    </div>
+  
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form (ngSubmit)="create_user()" [formGroup]="registerForm" autocomplete="off"  class="space-y-6" method="POST">
+
+        <div class="sm:col-span-3">
+            <label for="names" class="block text-sm font-medium leading-6 text-gray-900">Names</label>
+            <div class="mt-2">
+              <input formControlName="names" id="names" name="names" type="text" autocomplete="names" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+        </div>
+
+        <div class="sm:col-span-3">
+            <label for="surnames" class="block text-sm font-medium leading-6 text-gray-900">Surnames</label>
+            <div class="mt-2">
+              <input formControlName="surnames" id="surnames" name="surnames" type="text" autocomplete="surnames" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+        </div>
+
+        <div>
+          <label for="dni" class="block text-sm font-medium leading-6 text-gray-900">DNI</label>
+          <div class="mt-2">
+            <input formControlName="dni" id="dni" name="dni" type="text" autocomplete="dni" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+
+        <div>
+          <label for="phone" class="block text-sm font-medium leading-6 text-gray-900">Phone number</label>
+          <div class="mt-2">
+            <input formControlName="phone" id="phone" name="phone" type="tel" autocomplete="phone" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+          <div class="mt-2">
+            <input formControlName="email" id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+  
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+            <!-- <div class="text-sm">
+              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+            </div> -->
+          </div>
+          <div class="mt-2">
+            <input formControlName="password" id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+          <!-- REAPIT PASSWORD -->
+          
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="repeat-password" class="block text-sm font-medium leading-6 text-gray-900">Repeat Password</label>
+            <!-- <div class="text-sm">
+              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+            </div> -->
+          </div>
+          <div class="mt-2">
+            <input formControlName="repeat_password" id="repeat-password" name="repeat-password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+          <!-- REPEAT PASSWORD -->
+          
+        </div>
+
+        <div class="relative flex gap-x-3">
+          <div class="flex h-6 items-center">
+            <input formControlName="terms" id="terms" name="terms" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+          </div>
+          <div class="text-sm leading-6">
+            <label for="terms" class="font-medium text-gray-900">Términos y Condiciones</label>
+            <p class="text-gray-500">Al aceptar los términos y condiciones damos por echo que estas de acuerdo con el uso de tus datos!.</p>
+          </div>
+        </div>
+        
+        <div class="relative flex gap-x-3">
+          <div class="text-red-600 font-bold">
+            <p *ngIf="campo_no_valido('names')">*El nombre debe tener más de 3 caráteres</p>
+            <p *ngIf="campo_no_valido('surnames')">*El apellido debe tener más de 3 caráteres</p>
+            <p *ngIf="campo_no_valido('email')">*El email es obligatorio y válido</p>
+            <p *ngIf="passwords_valid()">*Las contraseñas no son iguales</p>
+            <p *ngIf="campo_no_valido('phone')">*El numero telefonico debe ser válido</p>
+            <p *ngIf="campo_no_valido('dni')">*El dni debe contener al menos 10 digitos válidos</p>
+            <p *ngIf="accept_terms()">*Debes aceptar los terminos y condiciones</p>
+
+
+
+
+          </div>
+        </div>
+  
+        <div>
+          <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register now</button>
+        </div>
+      </form>
+  
+      <p class="mt-10 text-center text-sm text-gray-500">
+        Ya eres miembro?
+        <a href="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">¡Inicia sesión ahora!</a>
+      </p>
+    </div>
+  </div>
+
