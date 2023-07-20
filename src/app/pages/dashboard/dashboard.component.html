@@ -1,29 +1,40 @@
-
 <div class="flex flex-grow px-5">
-    <!-- CARD BALANCE -->
-    <div class="px-4 border m-5 rounded-md bg-white sm:px-0">
+    <div class="px-4 border w-3/12 h-3/6 m-5 shadow-2xl rounded-2xl sm:px-0">
+
         <div id="title-balance" class="m-4 flex flex-grow justify-between">
-            <h1 class="text-center text-gray-400 font-semibold tracking-tight">Total Balance:</h1>
-             <!-- <h2 class="mt-1 text-2xl font-bold italic oldstyle-nums leading-6 text-green-600">$500.00</h2> -->
+            <div class="flex border rounded-2xl bg-white border-bg-black">
+                <p class=" m-1.5 text-center italic text-gray-800 font-semibold">VISA CARD</p>
+            </div>
+            <div>
+                <p class=" m-1.5 text-center text-gray-400 font-semibold">PayOne</p>
+            </div>
         </div>
-        <div id="amount-balance" class=" m-4 flex">
-            <!-- <h1 class="text-center text-XL font-semibold leading-9 tracking-tight">TOTAL BALANCE</h1> -->
-             <h2 class="mt-1 text-2xl font-bold italic oldstyle-nums leading-6 text-green-600">{{balance}}</h2>
+
+        <div class="flex flex-grow">
+            <div>
+                <div id="amount-balance" class=" m-1 ml-4 flex flex-grow">
+                    <p class="text-center font-light text-sm text-gray-400 leading-9">Current Balance</p>
+                </div>
+                <div class="flex m-1">
+                    <h2 class="ml-3 text-md font-bold leading-6 text-green-600">{{balance}}</h2>
+                </div>
+
+                <div id="name-user" class="m-2 ml-4 italic text-gray-400 text-sm flex flex-grow">
+                    <p>{{user.names}} {{user.surnames}}</p>
+                </div>
+            </div>
         </div>
     </div>
-<!-- END CARD BALANCE -->
+    <!-- END CARD BALANCE -->
 
-<!-- CARD TRANSACTIONS -->
-    <div class="px-4 border m-5 rounded-md bg-white sm:px-0">
+    <!-- CARD TRANSACTIONS -->
+    <!-- <div class="px-4 border m-5 rounded-md bg-white sm:px-0">
         <div id="title-balance" class="m-4 flex flex-grow justify-between">
             <h1 class="text-center text-gray-400 font-semibold tracking-tight">Total transacciones:</h1>
-             <!-- <h2 class="mt-1 text-2xl font-bold italic oldstyle-nums leading-6 text-green-600">$500.00</h2> -->
         </div>
         <div id="amount-balance" class=" m-4 flex flex-grow justify-center">
-            <!-- <h1 class="text-center text-XL font-semibold leading-9 tracking-tight">TOTAL BALANCE</h1> -->
-            <!-- <p class="mr-2">Has realizado:</p> -->
-             <h2 class="mt-1 text-lg font-bold text-gray-400">50</h2>
+             <h2 class="mt-1 text-lg font-bold text-gray-400">{{transaction}}</h2>
         </div>
-    </div>
+    </div> -->
     <!-- END CARD TRANSACTIONS -->
 </div>

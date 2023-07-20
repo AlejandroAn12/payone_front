@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import swal from 'sweetalert2';
 
 import { TransactionService } from 'src/app/services/transactions.service';
+import { Transaction } from 'src/app/models/transaction.model';
+import { ERROR_TYPE } from 'src/app/utils/ERRORS_TYPE.enum';
 
 @Component({
   selector: 'app-transaction',
@@ -10,6 +12,8 @@ import { TransactionService } from 'src/app/services/transactions.service';
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent {
+
+  public transaction! : Transaction;
 
   public form_submitted = false;
 
@@ -28,7 +32,7 @@ export class TransactionComponent {
   new_transaction(){
 
     this.form_submitted = true
-    console.log(this.transactionForm.value);
+    // console.log(this.transactionForm.value);
 
     if(this.transactionForm.invalid){
       return;
@@ -38,7 +42,7 @@ export class TransactionComponent {
     .subscribe((resp: any) => {
       console.log(resp)
 
-      if(resp.status === 400){
+      if(resp.status === ERROR_TYPE.UNAUTHORIZED){
         swal.fire({
           position: 'top-end',
           icon: 'error',
@@ -56,13 +60,19 @@ export class TransactionComponent {
           timer: 1500
         })
       }
-      
-
     }, (err) => {
       //Si sucede un error
       console.warn(err)
       swal.fire('Error', 'err0r', 'error')
     })
+  }
+
+  ngOnInit(): void {
+    this.transactionService.getUserTransactions().subscribe((resp: any) => {
+    }, (error) => {
+      console.log(error)
+    })
+    // throw new Error('Method not implemented.');
   }
 
 }

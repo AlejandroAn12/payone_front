@@ -6,6 +6,7 @@ export class Transaction {
         public id?: string,
         public comment?: string,
         public active?: boolean,
+        public count?: number,
         public last_access?: Date,
         public created_at?: Date,
     ){}

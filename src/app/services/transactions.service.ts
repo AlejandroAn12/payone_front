@@ -22,4 +22,8 @@ export class TransactionService {
   new_transaction(formData: Transaction){
     return this.http.post(`${base_url}/transactions/new-transaction`, formData);
   }
+
+  getUserTransactions(){
+    return this.http.get(`${base_url}/transactions/my-transaction`);
+  }
 }

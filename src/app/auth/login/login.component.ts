@@ -32,13 +32,6 @@ constructor(
 login(){
   this.authService.login_user(this.loginForm.value)
   .subscribe(resp => {
-      swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: `Sesión iniciada`,
-        showConfirmButton: false,
-        timer: 1500
-      })
       this.router.navigateByUrl('/');
 
   }, (err) => {

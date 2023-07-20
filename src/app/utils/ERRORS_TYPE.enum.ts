@@ -1,0 +1,4 @@
+export enum ERROR_TYPE {
+    UNAUTHORIZED = 401,
+    NOTFOUND = 404
+}
