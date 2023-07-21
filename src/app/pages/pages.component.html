@@ -1,18 +1,22 @@
 <app-navbar></app-navbar>
 <!-- <app-sidebar></app-sidebar> -->
 <div class="p-4 sm:ml-64">
-   <div class="flex">
-      <div class="mt-2">
+   
+   <div class="flex mt-2">
+      <div>
          <h1 class="text-lg italic text-gray-400 font-semibold">{{getGreetingMessage()}}, </h1>
       </div>
-      <div class="mt-2 ml-1.5">
+      <div class="ml-1.5">
          <h1 class="text-lg italic font-semibold">{{user.names}}</h1>
       </div>
    </div>
+
    <div class="m-2">
       <hr>
    </div>
-   <div class="p-4 mt-5 ">
+
+   <div class="p-4 mt-5">
       <router-outlet></router-outlet>
    </div>
+
 </div>
