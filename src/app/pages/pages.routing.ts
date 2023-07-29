@@ -9,13 +9,14 @@ import { PagesComponent } from './pages.component';
 
 
 const routes: Routes = [
-    { 
-        path: 'dashboard', 
-        component: PagesComponent,
-        canActivate: [ AuthGuard ],
-        canLoad: [ AuthGuard ],
-        loadChildren: () => import('./child-routes.module').then( m => m.ChildRoutesModule )
-    },
+  {
+    path: 'myaccount',
+    component: PagesComponent,
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
+    loadChildren: () =>
+      import('./child-routes.module').then((m) => m.ChildRoutesModule),
+  },
 ];
 
 @NgModule({

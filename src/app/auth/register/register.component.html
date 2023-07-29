@@ -1,111 +1,169 @@
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <!-- <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Incodek - PayFast"> -->
-      <h2 class="mt-20 text-5xl text-center font-extrabold text-blue-600">PayOne</h2>
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crea tu cuenta</h2>
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <!-- <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Incodek - PayFast"> -->
+    <h2 class="text-5xl text-center font-extrabold text-blue-600">PayOne</h2>
+    <h2 class="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crea tu cuenta</h2>
+  </div>
+
+  <div class="flex justify-between">
+
+    <!-- DIV IZQUIERDA -->
+    <div class="flex justify-center">
+      <img class="w-1/3 m-0.5" src="https://th.bing.com/th/id/R.60d930c20451788e61f94a156a1f85de?rik=GEv%2fx%2fHt%2bOkr4Q&riu=http%3a%2f%2faboutsupermariobros.files.wordpress.com%2f2011%2f01%2fmario-1.jpg&ehk=lfvV10yonA9mx820RzfX8QEfzExO%2fXtMMus43xnGjf4%3d&risl=&pid=ImgRaw&r=0" alt="">
     </div>
-  
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form (ngSubmit)="create_user()" [formGroup]="registerForm" autocomplete="off"  class="space-y-6" method="POST">
+    <!-- FIN DIV -->
 
-        <div class="sm:col-span-3">
-            <label for="names" class="block text-sm font-medium leading-6 text-gray-900">Names</label>
-            <div class="mt-2">
-              <input formControlName="names" id="names" name="names" type="text" autocomplete="names" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            </div>
-        </div>
-
-        <div class="sm:col-span-3">
-            <label for="surnames" class="block text-sm font-medium leading-6 text-gray-900">Surnames</label>
-            <div class="mt-2">
-              <input formControlName="surnames" id="surnames" name="surnames" type="text" autocomplete="surnames" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            </div>
-        </div>
-
-        <div>
-          <label for="dni" class="block text-sm font-medium leading-6 text-gray-900">DNI</label>
-          <div class="mt-2">
-            <input formControlName="dni" id="dni" name="dni" type="text" autocomplete="dni" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    <div class="mt-10">
+      <form (ngSubmit)="create_user()" [formGroup]="registerForm" autocomplete="off" class="w-full max-w-lg">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-names">
+              Names
+            </label>
+            <input formControlName="names"
+              class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              id="grid-names" type="text" placeholder="Escribe sus nombres">
+            <p *ngIf="campo_no_valido('names')" class="text-red-600 text-xs italic">El nombre debe tener más de 3
+              carácteres</p>
+    
+          </div>
+          <div class="w-full md:w-1/2 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-surnames">
+              Surnames
+            </label>
+            <input formControlName="surnames"
+              class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-surnames" type="text" placeholder="Escriba sus apellidos">
+            <p *ngIf="campo_no_valido('surnames')" class="text-red-600 text-xs italic">El apellido debe tener mas de 3
+              carácteres</p>
+    
           </div>
         </div>
-
-        <div>
-          <label for="phone" class="block text-sm font-medium leading-6 text-gray-900">Phone number</label>
-          <div class="mt-2">
-            <input formControlName="phone" id="phone" name="phone" type="tel" autocomplete="phone" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-dni">
+              Dni
+            </label>
+            <input formControlName="dni"
+              class="appearance-none block w-full   text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              id="grid-dni" type="text" placeholder="0900000000">
+            <p *ngIf="campo_no_valido('dni')" class="text-red-600 text-xs italic">El dni debe contener al menos 10 digitos
+              y debe ser válido</p>
+    
+          </div>
+          <div class="w-full md:w-1/2 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-phone">
+              Phone
+            </label>
+            <input formControlName="phone"
+              class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-phone" type="text" placeholder="+593 0900000000">
+            <p *ngIf="campo_no_valido('phone')" class="text-red-600 text-xs italic">El número telefónico debe ser válido
+            </p>
+    
           </div>
         </div>
-
-        <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-          <div class="mt-2">
-            <input formControlName="email" id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+              Email
+            </label>
+            <input formControlName="email"
+              class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-email" type="email" placeholder="example@example.com">
+            <p *ngIf="campo_no_valido('email')" class="text-red-600 text-xs italic">Procure que el email sea válido</p>
           </div>
         </div>
-  
-        <div>
-          <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-            <!-- <div class="text-sm">
-              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
-            </div> -->
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+              Password
+            </label>
+            <input formControlName="password"
+              class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-password" type="password" placeholder="******************">
+            <p *ngIf="campo_no_valido('password')" class="text-red-600 text-xs italic">La contraseña debe contener al
+              menos 8 carácteres</p>
           </div>
-          <div class="mt-2">
-            <input formControlName="password" id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
-          <!-- REAPIT PASSWORD -->
-          
         </div>
-
-        <div>
-          <div class="flex items-center justify-between">
-            <label for="repeat-password" class="block text-sm font-medium leading-6 text-gray-900">Repeat Password</label>
-            <!-- <div class="text-sm">
-              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
-            </div> -->
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-repeat-password">
+              Repeat Password
+            </label>
+            <input formControlName="repeat_password"
+              class="appearance-none block w-full  text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-repeat-password" type="password" placeholder="******************">
+            <p *ngIf="passwords_valid()" class="text-red-600 text-xs italic">Procure que la contrseña sea igual a la
+              anterior</p>
           </div>
-          <div class="mt-2">
-            <input formControlName="repeat_password" id="repeat-password" name="repeat-password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
-          <!-- REPEAT PASSWORD -->
-          
         </div>
-
-        <div class="relative flex gap-x-3">
+    
+        <!-- <div class="flex flex-wrap -mx-3 mb-2">
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                        City
+                      </label>
+                      <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-city" type="text" placeholder="Albuquerque">
+                    </div>
+                    
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                        State
+                      </label>
+                      <div class="relative">
+                        <select
+                          class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                          id="grid-state">
+                          <option>New Mexico</option>
+                          <option>Missouri</option>
+                          <option>Texas</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+                        Zip
+                      </label>
+                      <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-zip" type="text" placeholder="90210">
+                    </div>
+                  </div> -->
+        <div class="relative flex gap-x-3 mb-4">
           <div class="flex h-6 items-center">
-            <input formControlName="terms" id="terms" name="terms" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+            <input formControlName="terms" id="terms" name="terms" type="checkbox"
+              class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
           </div>
           <div class="text-sm leading-6">
             <label for="terms" class="font-medium text-gray-900">Términos y Condiciones</label>
-            <p class="text-gray-500">Al aceptar los términos y condiciones damos por echo que estas de acuerdo con el uso de tus datos!.</p>
+            <p class="text-gray-500">Al aceptar los términos y condiciones damos por echo que estas de acuerdo con el uso
+              de
+              tus
+              datos!.</p>
           </div>
         </div>
-        
-        <div class="relative flex gap-x-3">
-          <div class="text-red-600 font-bold">
-            <p *ngIf="campo_no_valido('names')">*El nombre debe tener más de 3 caráteres</p>
-            <p *ngIf="campo_no_valido('surnames')">*El apellido debe tener más de 3 caráteres</p>
-            <p *ngIf="campo_no_valido('email')">*El email es obligatorio y válido</p>
-            <p *ngIf="passwords_valid()">*Las contraseñas no son iguales</p>
-            <p *ngIf="campo_no_valido('phone')">*El numero telefonico debe ser válido</p>
-            <p *ngIf="campo_no_valido('dni')">*El dni debe contener al menos 10 digitos válidos</p>
-            <p *ngIf="accept_terms()">*Debes aceptar los terminos y condiciones</p>
-
-
-
-
-          </div>
-        </div>
-  
+        <p class="text-red-500" *ngIf="accept_terms()">*Debes aceptar los terminos y condiciones</p>
         <div>
-          <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register now</button>
+          <button type="submit"
+            class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register
+            now</button>
         </div>
       </form>
-  
       <p class="mt-10 text-center text-sm text-gray-500">
         Ya eres miembro?
         <a href="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">¡Inicia sesión ahora!</a>
       </p>
     </div>
-  </div>
 
+  </div>
+  
+
+</div>

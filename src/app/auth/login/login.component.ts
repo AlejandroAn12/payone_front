@@ -8,35 +8,39 @@ import swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  loading = false;
 
-     
   public form_submitted = false;
-  loginForm : FormGroup;
+  loginForm: FormGroup;
 
-constructor(
-  private router: Router,
-  private fb: FormBuilder,
-  private authService: AuthService
-  ){
-      this.loginForm = this.fb.group({
-          email: ['alejandroan@incodek.com', [Validators.required, Validators.email]],
-          password: ['Test1234', [Validators.required, Validators.minLength(3)]],
-        });
-      
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) {
+    this.loginForm = this.fb.group({
+      email: [
+        'alejandroan@incodek.com',
+        [Validators.required, Validators.email],
+      ],
+      password: ['Test1234', [Validators.required, Validators.minLength(3)]],
+    });
   }
 
-
-login(){
-  this.authService.login_user(this.loginForm.value)
-  .subscribe(resp => {
-      this.router.navigateByUrl('/');
-
-  }, (err) => {
-      swal.fire('Error', err.error.message[0], 'error')
-  });
-}
-
+  login() {
+    this.loading = true;
+    this.authService.login_user(this.loginForm.value).subscribe(
+      (resp) => {
+        this.loading = false;
+        this.router.navigateByUrl('/');
+      },
+      (err) => {
+        this.loading = false;
+        swal.fire('Error', err.error.message[0], 'error');
+      }
+    );
+  }
 }

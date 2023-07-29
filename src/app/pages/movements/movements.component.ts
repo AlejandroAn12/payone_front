@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Egresos } from 'src/app/interfaces/egresos.interface';
 import { Ingresos } from 'src/app/interfaces/ingresos.interface';
 import { Transaction } from 'src/app/interfaces/transaction.interface';
@@ -9,11 +9,11 @@ import { BalanceService } from 'src/app/services/balance.service';
 import { TransactionService } from 'src/app/services/transactions.service';
 
 @Component({
-  selector: 'app-balance',
-  templateUrl: './balance.component.html',
-  styleUrls: ['./balance.component.css'],
+  selector: 'app-movements',
+  templateUrl: './movements.component.html',
+  styleUrls: ['./movements.component.css'],
 })
-export class BalanceComponent implements OnInit {
+export class MovementsComponent {
   public balance!: Balance;
   public transactions!: Transaction;
   public count: number = 0;

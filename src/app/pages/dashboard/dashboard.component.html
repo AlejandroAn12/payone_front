@@ -1,28 +1,64 @@
-<div class="flex flex-grow">
-    <div class="px-4 border w-3/12 h-3/6 m-5 shadow-2xl bg-green-500 border-green-500 rounded-2xl sm:px-0">
 
-        <div id="title-balance" class="m-4 flex flex-grow justify-between">
-            <div class="flex border rounded-2xl border-white">
-                <p class=" m-1 text-center italic text-white font-semibold">Mastercard</p>
-            </div>
-            <div>
-                <p class=" m-1.5 text-center text-white font-semibold">PayOne</p>
+<!-- <div class="border shadow-lg rounded-lg">
+    <div id="title-balance" class="justify-center m-4 flex flex-grow">
+        <div>
+            <h1 class="text-lg italic text-gray-400 font-semibold">{{getGreetingMessage()}}, </h1>
+        </div>
+        <div class="ml-1.5">
+            <h1 class="text-lg italic font-semibold">{{user.names}} {{user.surnames}}</h1>
+        </div>
+    </div>
+    <div id="title-balance" class="justify-center m-4 flex flex-grow">
+        <h1 class="text-center text-gray-400 text-4xl font-semibold tracking-tight">Saldo contable</h1>
+    </div>
+
+    <div class="flex m-4 justify-center">
+        <div class="px-4 m-5 sm:px-0">
+
+            <div id="amount-balance" class=" m-4 flex justify-center">
+                <h2 class="mt-1 text-7xl text-green-500 font-bold">{{balance}}</h2>
             </div>
         </div>
+    </div>
+</div> -->
 
-        <div class="flex flex-grow">
-            <div>
-                <div id="amount-balance" class=" m-1 ml-4 flex flex-grow">
-                    <p class="text-center font-light text-sm text-white leading-9">Current Balance</p>
-                </div>
-                <div class="flex m-1">
-                    <h2 class="ml-3 text-md font-bold leading-6 text-white">{{balance}}</h2>
-                </div>
+<div id="title-balance" class=" m-4 flex flex-grow">
+    <div>
+        <h1 class="text-lg italic text-gray-400 font-semibold">{{getGreetingMessage()}}, </h1>
+    </div>
+    <div class="ml-1.5">
+        <h1 class="text-lg italic font-semibold">{{user.names}} {{user.surnames}}</h1>
+    </div>
+</div>
 
-                <div id="name-user" class="m-2 ml-4 italic text-white text-sm flex flex-grow">
-                    <p>{{user.names}} {{user.surnames}}</p>
-                </div>
+<div class="flex m-4">
+    <div class="w-1/2 h-12 ">
+        <div class="m-4 w-1/2 bg-white border rounded-lg">
+            <div id="title-balance" class=" m-2 justify-between flex flex-grow">
+                <h1 class="text-center text-gray-500 text-lg font-semibold tracking-tight">Saldo contable</h1>
+                <a href="" class="text-xl font-semibold tracking-tight"><i class="fa-solid fa-ellipsis-vertical"></i></a>
             </div>
+            <div id="amount-balance" class=" m-4 flex justify-center">
+                <h2 class="mt-1 text-xl text-green-500 font-bold">{{balance}}</h2>
+            </div>
+            <div id="title-balance" class=" m-2 justify-center flex flex-grow">
+                <h1 class="text-center  text-sm font-semibold tracking-tight">Disponible</h1>
+            </div>
+        </div>
+    </div>
+    <div class="w-1/2 bg-white rounded-lg">
+        <div class="info m-2">
+            <p><strong>Menu rápido: </strong>Ahora desde aquí puedes seleccionar si deseas enviar o solicitar dinero a tus contactos.</p>
+        </div>
+        <div class="m-2 flex flex-grow" id="but">
+            <button
+                class=" text-blue-950 bg-yellow-400 font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-yellow-400  hover:-translate-y-1 hover:scale-110 hover:bg-green-500 hover:border-transparent duration-300 lg: mr-7">
+                Enviar
+            </button>
+            <button
+                class=" text-blue-950 bg-yellow-400 font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-yellow-400  hover:-translate-y-1 hover:scale-110 hover:bg-green-500 hover:border-transparent duration-300 lg: mr-7">
+                Socilitar
+            </button>
         </div>
     </div>
 </div>

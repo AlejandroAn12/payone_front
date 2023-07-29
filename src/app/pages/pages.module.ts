@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { PagesComponent } from './pages.component';
+import { MovementsComponent } from './movements/movements.component';
 
 
 
@@ -18,6 +19,7 @@ import { PagesComponent } from './pages.component';
     DashboardComponent,
     BalanceComponent,
     TransactionComponent,
+    MovementsComponent,
     ProfileComponent
   ],
   imports: [

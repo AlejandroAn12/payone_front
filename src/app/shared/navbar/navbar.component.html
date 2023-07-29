@@ -1,30 +1,53 @@
-<nav class="bg-indigo-600 py-2 relative">
-    <div class="container mx-auto flex px-8 xl:px-0">
-      <div class="flex flex-grow items-center">
-        <img class="w-12" src="assets/img/logo.svg" alt="logo">
-      </div>
-      <div class="flex lg:hidden">
-        <img src="assets/img/icon _menu_.svg" onclick="openMenu()" alt="menu">
-      </div>
-      <div id="menu" class="lg:flex hidden flex-grow items-center justify-between absolute lg:relative lg:top-0 top-20
-       left-0 w-full lg:w-auto py-1">
-        <div class="flex flex-col lg:flex-row p-3">
-          <!-- <a routerLink="/" class="text-white lg: mr-7 ">Inicio</a> -->
-          <a routerLink="/" class= "lg: mr-7 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold text-white">Inicio</a>
-          <a routerLink="/dashboard/balance" class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">Balance</a>
-          <a routerLink="/dashboard/transaction" class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">Transferencia</a>
-          <!-- <a href="#">Inicio</a> -->
-          
-        </div>
-        <div class="flex flex-col lg:flex-row text-center items-center">
-          <button (click)="logOut()" class=" text-white font-bold py-2.5 px-5 rounded-md transition ease-in-out delay-150 bg-[#f35b6c] border border-[#ec6171] hover:-translate-y-1 hover:scale-110 hover:bg-[#8587EE] hover:border-blue-600 duration-300 lg: mr-7">
-            Log Out
-          </button>
-          <!-- <button (submit)="logOut()" class="bg-[#f35b6c] border border-[#ec6171] text-white py-2.5 px-5 rounded-md
-           hover:bg-[#F75467] transition duration-500 ease-in-out delay-150">Cerrar sesión</button> -->
-        </div>
-      </div>
-      
+<nav class="bg-gray-800 py-4 px-6 fixed top-0 left-0 w-full z-10">
+  <div class="container mx-auto flex px-8 xl:px-0">
+    <div class="flex flex-grow items-center">
+      <img class="w-12" src="assets/img/logo.svg" alt="logo">
     </div>
-  </nav>
-  
+    <div class="flex lg:hidden">
+      <img src="assets/img/icon _menu_.svg" onclick="openMenu()" alt="menu">
+    </div>
+    <div id="menu" class="lg:flex hidden flex-grow items-center justify-between absolute lg:relative lg:top-0 top-20
+       left-0 w-full lg:w-auto py-1">
+      <div class="flex flex-col lg:flex-row p-3">
+        <!-- <a routerLink="/" class="text-white lg: mr-7 ">Inicio</a> -->
+        <a routerLink="/"
+          class="lg: mr-7 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold text-white">Inicio</a>
+        <a routerLink="/myaccount/transfer"
+          class="text-white transition  ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">Enviar
+          y solicitar</a>
+        <a routerLink="/myaccount/balance"
+          class="text-white transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">Cartera</a>
+        <a routerLink="/myaccount/activities"
+          class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">Movimientos</a>
+        <!-- <a routerLink="/myaccount/profile"
+          class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">Perfil</a> -->
+          <!-- <a href="#">Inicio</a> -->
+
+      </div>
+      <div class="flex flex-col lg:flex-row text-center items-center">
+
+        <a routerLink="/myaccount/profile"
+          class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">
+          <i class="fa-solid fa-bell"></i>
+        </a>
+
+        <a routerLink="/myaccount/profile" class="text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">
+          <i class="fa-solid fa-gear"></i>
+        </a>
+        
+
+        <!-- <button
+            class=" text-white font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border  hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:border-transparent duration-300 lg: mr-7">
+            <i class="fa-solid fa-gear"></i>
+          </button> -->
+        <button (click)="logOut()"
+          class=" text-white font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border  hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:border-transparent duration-300 lg: mr-7">
+          CERRAR SESIÓN
+        </button>
+        <!-- <button (submit)="logOut()" class="bg-[#f35b6c] border border-[#ec6171] text-white py-2.5 px-5 rounded-md
+           hover:bg-[#F75467] transition duration-500 ease-in-out delay-150">Cerrar sesión</button> -->
+      </div>
+    </div>
+
+  </div>
+</nav>

@@ -1,128 +1,133 @@
-<div class="border shadow-lg rounded-lg">
+<!-- <div class="border shadow-lg rounded-lg">
     <div id="title-balance" class="m-4 flex flex-grow">
         <h1 class="text-center text-gray-400 text-4xl font-light tracking-tight">Your balance is</h1>
     </div>
-    
+
     <div class="flex m-4 justify-center">
         <div class="px-4 m-5 sm:px-0">
-    
+
             <div id="amount-balance" class=" m-4 flex justify-center">
                 <h2 class="mt-1 text-7xl text-green-500 font-bold">{{balance}}</h2>
             </div>
         </div>
     </div>
+</div> -->
+
+<div>
+
+    <div class="flex flex-grow justify-center">
+        <div class="px-4 border w-3/12 h-3/6 m-5 shadow-2xl bg-green-500 border-green-500 rounded-2xl sm:px-0">
+    
+            <div id="title-balance" class="m-4 flex flex-grow justify-between">
+                <div class="flex border rounded-2xl border-white">
+                    <p class=" m-1 text-center italic text-white font-semibold">Mastercard</p>
+                </div>
+                <div>
+                    <p class=" m-1.5 text-center text-white font-semibold">PayOne</p>
+                </div>
+            </div>
+    
+            <div class="flex flex-grow">
+                <div>
+                    <div id="amount-balance" class=" m-1 ml-4 flex flex-grow">
+                        <p class="text-center font-light text-sm text-white leading-9">Current Balance</p>
+                    </div>
+                    <div class="flex m-1">
+                        <h2 class="ml-3 text-md font-bold leading-6 text-white">{{balance}}</h2>
+                    </div>
+    
+                    <div id="name-user" class="m-2 ml-4 italic text-white text-sm flex flex-grow">
+                        <p>{{user.names}} {{user.surnames}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="mt-10 ">
+        <div class="m-4">
+            <h3 class="font-bold">Transactions</h3>
+            <!-- <p class="mt-2 text-sm text-gray-400">Tienes {{count}} transacciones realizadas</p> -->
+        </div>
+        <div class="m-5">
+            <table class="items-center bg-transparent w-full border-collapse ">
+                <thead>
+                    <tr>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            TRANSACTION ID
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            USER
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            AMOUNT
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            CONCEPT
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            DATE
+                        </th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor="let egreso of egresos">
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{egreso.transaction_id}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left ">
+                            {{egreso.receiver.names}} {{egreso.receiver.surnames}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 text-red-600 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            -{{egreso.amount}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{egreso.comment}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{egreso.createdDate}}
+                        </th>
+                    </tr>
+                    <tr *ngFor="let ingreso of ingresos">
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{ingreso.transaction_id}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{ingreso.sender.names}} {{ingreso.sender.surnames}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 text-green-600 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            +{{ingreso.amount}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{ingreso.comment}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{ingreso.createdDate}}
+                        </th>
+                    </tr>
+    
+                </tbody>
+    
+            </table>
+        </div>
+    </div>
+
 </div>
 
-<div class="mt-10 ">
-    <div class="m-4">
-        <h3 class="font-bold">Transactions</h3>
-    </div>
-    <div class="m-5 border rounded-md">
-        <table class="items-center bg-transparent w-full border-collapse ">
-            <thead>
-                <tr>
-                    <th
-                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Transaction ID
-                    </th>
-                    <th
-                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Visitors
-                    </th>
-                    <th
-                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Unique users
-                    </th>
-                    <th
-                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Bounce rate
-                    </th>
-                </tr>
-            </thead>
-        
-            <tbody>
-                <tr>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                        /argon/
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        4,569
-                    </td>
-                    <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        340
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                        46,53%
-                    </td>
-                </tr>
-                <tr>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        /argon/index.html
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        3,985
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        319
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                        46,53%
-                    </td>
-                </tr>
-                <tr>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        /argon/charts.html
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        3,513
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        294
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                        36,49%
-                    </td>
-                </tr>
-                <tr>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        /argon/tables.html
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        2,050
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        147
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                        50,87%
-                    </td>
-                </tr>
-                <tr>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        /argon/profile.html
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        1,795
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        190
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                        46,53%
-                    </td>
-                </tr>
-            </tbody>
-        
-        </table>
-    </div>
-</div>
