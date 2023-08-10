@@ -3,7 +3,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ primary color #46dff0 
+ secundary color #e90c59
+
+*/
+
 body {
-    background: #1111;
+    background: #ffffff;
+    /* background: #1111; */
     padding: 0px;
+}
+
+.margen{
+    /* margin-top: 80px; */
+    padding-top: 5%;
+}
+
+.my-select {
+  @apply py-2 px-4 border rounded-md;
 }

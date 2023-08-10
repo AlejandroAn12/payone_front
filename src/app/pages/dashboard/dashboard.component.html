@@ -1,64 +1,98 @@
+<div class="h-screen items-center justify-center flex flex-wrap ">
 
-<!-- <div class="border shadow-lg rounded-lg">
-    <div id="title-balance" class="justify-center m-4 flex flex-grow">
-        <div>
-            <h1 class="text-lg italic text-gray-400 font-semibold">{{getGreetingMessage()}}, </h1>
-        </div>
-        <div class="ml-1.5">
-            <h1 class="text-lg italic font-semibold">{{user.names}} {{user.surnames}}</h1>
-        </div>
-    </div>
-    <div id="title-balance" class="justify-center m-4 flex flex-grow">
-        <h1 class="text-center text-gray-400 text-4xl font-semibold tracking-tight">Saldo contable</h1>
-    </div>
+    <!-- BANNER USERNAME -->
+    <div id="title-balance" class=" w-full m-6 flex justify-center">
 
-    <div class="flex m-4 justify-center">
-        <div class="px-4 m-5 sm:px-0">
-
-            <div id="amount-balance" class=" m-4 flex justify-center">
-                <h2 class="mt-1 text-7xl text-green-500 font-bold">{{balance}}</h2>
+        <div class="flex bg-white p-3 border rounded-md shadow-md">
+            <div>
+                <h1 class="text-lg italic text-gray-400 font-semibold">{{getGreetingMessage()}}, </h1>
+            </div>
+            <div class="ml-1.5">
+                <h1 class="text-lg italic font-semibold">{{user.names}} {{user.surnames}}</h1>
             </div>
         </div>
-    </div>
-</div> -->
 
-<div id="title-balance" class=" m-4 flex flex-grow">
-    <div>
-        <h1 class="text-lg italic text-gray-400 font-semibold">{{getGreetingMessage()}}, </h1>
+        
     </div>
-    <div class="ml-1.5">
-        <h1 class="text-lg italic font-semibold">{{user.names}} {{user.surnames}}</h1>
+    <div class="max-w-sm m-5 bg-white rounded overflow-hidden shadow-lg">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">Cartera</div>
+            <p class="text-gray-700 text-base">
+                Contenido de la tarjeta. Aquí puedes escribir una descripción o información relevante.
+            </p>
+        </div>
+        <div class="px-6 py-4">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Etiqueta
+                1</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Etiqueta
+                2</span>
+        </div>
     </div>
-</div>
 
-<div class="flex m-4">
-    <div class="w-1/2 h-12 ">
-        <div class="m-4 w-1/2 bg-white border rounded-lg">
-            <div id="title-balance" class=" m-2 justify-between flex flex-grow">
-                <h1 class="text-center text-gray-500 text-lg font-semibold tracking-tight">Saldo contable</h1>
-                <a href="" class="text-xl font-semibold tracking-tight"><i class="fa-solid fa-ellipsis-vertical"></i></a>
-            </div>
-            <div id="amount-balance" class=" m-4 flex justify-center">
-                <h2 class="mt-1 text-xl text-green-500 font-bold">{{balance}}</h2>
-            </div>
-            <div id="title-balance" class=" m-2 justify-center flex flex-grow">
-                <h1 class="text-center  text-sm font-semibold tracking-tight">Disponible</h1>
-            </div>
+    <div class="max-w-sm m-5 bg-white rounded overflow-hidden shadow-lg">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">Enviar y solicitar</div>
+            <p class="text-gray-700 text-base">
+                Contenido de la tarjeta. Aquí puedes escribir una descripción o información relevante.
+            </p>
+        </div>
+        <div class="px-6 py-4">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Etiqueta
+                1</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Etiqueta
+                2</span>
         </div>
     </div>
-    <div class="w-1/2 bg-white rounded-lg">
-        <div class="info m-2">
-            <p><strong>Menu rápido: </strong>Ahora desde aquí puedes seleccionar si deseas enviar o solicitar dinero a tus contactos.</p>
+
+    <div class="max-w-sm m-5 bg-white rounded overflow-hidden shadow-lg">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">Preguntas frecuentes</div>
+            <p class="text-gray-700 text-base">
+                Contenido de la tarjeta. Aquí puedes escribir una descripción o información relevante.
+            </p>
         </div>
-        <div class="m-2 flex flex-grow" id="but">
-            <button
-                class=" text-blue-950 bg-yellow-400 font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-yellow-400  hover:-translate-y-1 hover:scale-110 hover:bg-green-500 hover:border-transparent duration-300 lg: mr-7">
-                Enviar
-            </button>
-            <button
-                class=" text-blue-950 bg-yellow-400 font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-yellow-400  hover:-translate-y-1 hover:scale-110 hover:bg-green-500 hover:border-transparent duration-300 lg: mr-7">
-                Socilitar
-            </button>
+        <div class="px-6 py-4">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Etiqueta
+                1</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">Etiqueta
+                2</span>
         </div>
     </div>
+
+    <!-- BODY -->
+    <!-- <div class="flex">
+        <div class="w-1/2 h-12 ">
+            <div class="m-4 w-1/2 bg-white shadow-sm border rounded-lg">
+                <div id="title-balance" class=" m-2 justify-between flex flex-grow">
+                    <h1 class="text-center text-gray-500 text-lg font-semibold tracking-tight">Tu dinero actual</h1>
+                    <a href="" class="text-xl font-semibold tracking-tight"><i
+                            class="fa-solid fa-ellipsis-vertical"></i></a>
+                </div>
+                <div id="amount-balance" class=" m-4 flex justify-center">
+                    <h2 class="mt-1 text-xl text-green-500 font-bold">{{balance}}</h2>
+                </div>
+                <div id="title-balance" class=" m-2 justify-center flex flex-grow">
+                    <h1 class="text-center  text-sm font-semibold tracking-tight">Disponible</h1>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/2 bg-white border shadow-sm rounded-lg">
+            <div class="info m-2">
+                <p><strong>Menu rápido!: </strong>Ahora desde aquí puedes seleccionar si deseas enviar o solicitar
+                    dinero a
+                    tus contactos.</p>
+            </div>
+            <div class="m-2 flex flex-grow" id="but">
+                <button routerLink="/myaccount/transfer/send"
+                    class=" text-blue-950 bg-yellow-400 font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-yellow-400  hover:-translate-y-1 hover:scale-110 hover:bg-yellow-200 hover:border-transparent duration-300 lg: mr-7">
+                    Enviar
+                </button>
+                <button
+                    routerLink="/myaccount/transfer/request"
+                    class=" text-blue-950 bg-yellow-400 font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-yellow-400  hover:-translate-y-1 hover:scale-110 hover:bg-yellow-200 hover:border-transparent duration-300 lg: mr-7">
+                    Socilitar
+                </button>
+            </div>
+        </div>
+    </div> -->
 </div>

@@ -4,6 +4,7 @@ export class Transaction {
         public sender?: string,
         public receiver?: string,
         public id?: string,
+        public code? : string,
         public comment?: string,
         public active?: boolean,
         public count?: number,

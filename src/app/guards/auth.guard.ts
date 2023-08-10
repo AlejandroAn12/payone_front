@@ -15,7 +15,8 @@ export class AuthGuard implements CanActivate {
       // console.log('PASO POR EL GUARD')
       return this.authService.validarToken()
       .pipe(tap(isLogged => {
-        if(!isLogged) {
+        if (!isLogged) {
+          console.log('EL token ha expiriado')
           this.router.navigateByUrl('/login')
         }
       })) ;

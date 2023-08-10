@@ -1,133 +1,50 @@
-<!-- <div class="border shadow-lg rounded-lg">
-    <div id="title-balance" class="m-4 flex flex-grow">
-        <h1 class="text-center text-gray-400 text-4xl font-light tracking-tight">Your balance is</h1>
-    </div>
-
-    <div class="flex m-4 justify-center">
-        <div class="px-4 m-5 sm:px-0">
-
-            <div id="amount-balance" class=" m-4 flex justify-center">
-                <h2 class="mt-1 text-7xl text-green-500 font-bold">{{balance}}</h2>
-            </div>
+<div class="margen">
+    <!-- <div class="border shadow-lg rounded-lg">
+        <div id="title-balance" class="m-4 flex flex-grow">
+            <h1 class="text-center text-gray-400 text-4xl font-light tracking-tight">Your balance is</h1>
         </div>
-    </div>
-</div> -->
-
-<div>
-
-    <div class="flex flex-grow justify-center">
-        <div class="px-4 border w-3/12 h-3/6 m-5 shadow-2xl bg-green-500 border-green-500 rounded-2xl sm:px-0">
     
-            <div id="title-balance" class="m-4 flex flex-grow justify-between">
-                <div class="flex border rounded-2xl border-white">
-                    <p class=" m-1 text-center italic text-white font-semibold">Mastercard</p>
-                </div>
-                <div>
-                    <p class=" m-1.5 text-center text-white font-semibold">PayOne</p>
-                </div>
-            </div>
+        <div class="flex m-4 justify-center">
+            <div class="px-4 m-5 sm:px-0">
     
-            <div class="flex flex-grow">
-                <div>
-                    <div id="amount-balance" class=" m-1 ml-4 flex flex-grow">
-                        <p class="text-center font-light text-sm text-white leading-9">Current Balance</p>
-                    </div>
-                    <div class="flex m-1">
-                        <h2 class="ml-3 text-md font-bold leading-6 text-white">{{balance}}</h2>
-                    </div>
-    
-                    <div id="name-user" class="m-2 ml-4 italic text-white text-sm flex flex-grow">
-                        <p>{{user.names}} {{user.surnames}}</p>
-                    </div>
+                <div id="amount-balance" class=" m-4 flex justify-center">
+                    <h2 class="mt-1 text-7xl text-green-500 font-bold">{{balance}}</h2>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     
+    <div>
     
-    <div class="mt-10 ">
-        <div class="m-4">
-            <h3 class="font-bold">Transactions</h3>
-            <!-- <p class="mt-2 text-sm text-gray-400">Tienes {{count}} transacciones realizadas</p> -->
+        <div class="flex flex-grow justify-center">
+            <div class="px-4 border w-3/12 h-3/6 m-5 shadow-2xl bg-green-500 border-green-500 rounded-2xl sm:px-0">
+    
+                <div id="title-balance" class="m-4 flex flex-grow justify-between">
+                    <div class="flex border rounded-2xl border-white">
+                        <p class=" m-1 text-center italic text-white font-semibold">Mastercard</p>
+                    </div>
+                    <div>
+                        <p class=" m-1.5 text-center text-white font-semibold">PayOne</p>
+                    </div>
+                </div>
+    
+                <div class="flex flex-grow">
+                    <div>
+                        <div id="amount-balance" class=" m-1 ml-4 flex flex-grow">
+                            <p class="text-center font-light text-sm text-white leading-9">Current Balance</p>
+                        </div>
+                        <div class="flex m-1">
+                            <h2 class="ml-3 text-md font-bold leading-6 text-white">{{balance}}</h2>
+                        </div>
+    
+                        <div id="name-user" class="m-2 ml-4 italic text-white text-sm flex flex-grow">
+                            <p>{{user.names}} {{user.surnames}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="m-5">
-            <table class="items-center bg-transparent w-full border-collapse ">
-                <thead>
-                    <tr>
-                        <th
-                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                            TRANSACTION ID
-                        </th>
-                        <th
-                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                            USER
-                        </th>
-                        <th
-                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                            AMOUNT
-                        </th>
-                        <th
-                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                            CONCEPT
-                        </th>
-                        <th
-                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                            DATE
-                        </th>
-                    </tr>
-                </thead>
     
-                <tbody>
-                    <tr *ngFor="let egreso of egresos">
-                        <th
-                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                            {{egreso.transaction_id}}
-                        </th>
-                        <th
-                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left ">
-                            {{egreso.receiver.names}} {{egreso.receiver.surnames}}
-                        </th>
-                        <th
-                            class="border-t-0 px-6 text-red-600 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                            -{{egreso.amount}}
-                        </th>
-                        <th
-                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                            {{egreso.comment}}
-                        </th>
-                        <th
-                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                            {{egreso.createdDate}}
-                        </th>
-                    </tr>
-                    <tr *ngFor="let ingreso of ingresos">
-                        <th
-                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                            {{ingreso.transaction_id}}
-                        </th>
-                        <th
-                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                            {{ingreso.sender.names}} {{ingreso.sender.surnames}}
-                        </th>
-                        <th
-                            class="border-t-0 px-6 text-green-600 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                            +{{ingreso.amount}}
-                        </th>
-                        <th
-                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                            {{ingreso.comment}}
-                        </th>
-                        <th
-                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                            {{ingreso.createdDate}}
-                        </th>
-                    </tr>
-    
-                </tbody>
-    
-            </table>
-        </div>
     </div>
 
 </div>
-

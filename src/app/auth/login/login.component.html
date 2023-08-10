@@ -1,17 +1,21 @@
-<div class="bg-green-700" *ngIf="loading; else content">
-<div
+<div *ngIf="loading; else content">
+  <app-splashcreen></app-splashcreen>
+<!-- <div
   class="fixed inset-0 flex items-center justify-center h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
   role="status">
   <span
     class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-</div>
+</div> -->
 </div>
 
 <ng-template #content>
-  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+  <div class="flex h-screen flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto  sm:w-full sm:max-w-sm">
+      <div class="flex flex-grow justify-center">
+      <h2 class="mt-20 text-5xl text-center font-extrabold text-[#e90c59]">Pey</h2><h2 class="mt-20 text-5xl text-center font-extrabold text-blue-600">One</h2>
+
+      </div>
       <!-- <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Incodek - PayFast"> -->
-      <h2 class="mt-20 text-5xl text-center font-extrabold text-blue-600">PayOne</h2>
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Inicia sesión en tu cuenta
       </h2>
     </div>
@@ -56,4 +60,5 @@
     </div>
   </div>
 </ng-template>
+<app-footer></app-footer>
 

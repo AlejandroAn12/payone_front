@@ -4,7 +4,7 @@ export interface Transaction {
   comment?: any;
   sender?: any;
   count?: number;
-  code?: string;
+  code?: any;
   ingresos?: [];
   egresos?: [];
   transactions?: any

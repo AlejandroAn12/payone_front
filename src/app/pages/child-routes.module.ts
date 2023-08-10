@@ -5,6 +5,8 @@ import { BalanceComponent } from './balance/balance.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MovementsComponent } from './movements/movements.component';
+import { SendComponent } from './transaction/send/send.component';
+import { RequestComponent } from './transaction/request/request.component';
 
 // Mantenimientos
 
@@ -19,6 +21,16 @@ const childRoutes: Routes = [
     path: 'transfer',
     component: TransactionComponent,
     data: { titulo: 'Busquedas' },
+  },
+  {
+    path: 'transfer/send',
+    component: SendComponent,
+    data: { titulo: 'Enviar' },
+  },
+  {
+    path: 'transfer/request',
+    component: RequestComponent,
+    data: { titulo: 'Solicitar' },
   },
   {
     path: 'activities',

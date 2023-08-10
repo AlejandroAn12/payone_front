@@ -13,7 +13,7 @@ const base_url = environment.base_url;
 export class TransactionService {
   constructor(private router: Router, private http: HttpClient) {}
 
-  new_transaction(formData: Transaction) {
+  new_transaction_by_email(formData: Transaction) {
     return this.http.post(`${base_url}/transactions/new-transaction`, formData);
   }
 

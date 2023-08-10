@@ -34,6 +34,7 @@ export class LoginComponent {
     this.loading = true;
     this.authService.login_user(this.loginForm.value).subscribe(
       (resp) => {
+        console.log(resp)
         this.loading = false;
         this.router.navigateByUrl('/');
       },

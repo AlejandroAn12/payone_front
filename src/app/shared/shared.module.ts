@@ -4,21 +4,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { SplashcreenComponent } from './splashcreen/splashcreen.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
 @NgModule({
-  declarations: [
-    NavbarComponent,
-    FooterComponent
-  ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    RouterModule
-  ],
-  exports: [
-    NavbarComponent
-  ]
+  declarations: [NavbarComponent, FooterComponent, SplashcreenComponent],
+  imports: [BrowserModule, CommonModule, HttpClientModule, RouterModule],
+  exports: [NavbarComponent, FooterComponent, SplashcreenComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

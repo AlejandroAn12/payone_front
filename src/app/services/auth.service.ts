@@ -52,6 +52,7 @@ export class AuthService {
   login_user(formDATA: LoginForm) {
     return this.http.post(`${base_url}/authentication/login`, formDATA).pipe(
       map((resp: any) => {
+        console.log('RESPUESTA DESDE EL SERVICIO DE AUTH =>>', resp)
         if (resp.status === ERROR_TYPE.UNAUTHORIZED) {
           swal.fire({
             position: 'top-end',

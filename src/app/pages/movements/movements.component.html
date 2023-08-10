@@ -1,83 +1,107 @@
-<div class="mt-10 ">
-    <div class="m-4">
-        <h3 class="font-bold">Transactions</h3>
-        <!-- <p class="mt-2 text-sm text-gray-400">Tienes {{count}} transacciones realizadas</p> -->
+<div class="h-screen flex items-center justify-center">
+<!-- <div class="bg-green-400">
+    <div class="flex m-6 justify-center">
+        <input type="text" class="border rounded-full w-96 border-transparent shadow-md"
+            placeholder="Buscar transacción por email">
+        <button
+            class="bg-green-400 border shadow-md rounded-full w-10 h-10 ml-1 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 lg: mr-7">
+            <i class="fa-solid text-white fa-magnifying-glass"></i>
+        </button>
     </div>
-    <div class="m-5">
-        <table class="items-center bg-transparent w-full border-collapse ">
-            <thead>
-                <tr>
-                    <th
-                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        TRANSACTION ID
-                    </th>
-                    <th
-                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        USER
-                    </th>
-                    <th
-                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        AMOUNT
-                    </th>
-                    <th
-                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        CONCEPT
-                    </th>
-                    <th
-                        class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        DATE
-                    </th>
-                </tr>
-            </thead>
+</div> -->
 
-            <tbody>
-                <tr *ngFor="let egreso of egresos">
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {{egreso.transaction_id}}
-                    </th>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left ">
-                        {{egreso.receiver.names}} {{egreso.receiver.surnames}}
-                    </th>
-                    <th
-                        class="border-t-0 px-6 text-red-600 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        -{{egreso.amount}}
-                    </th>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {{egreso.comment}}
-                    </th>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {{egreso.createdDate}}
-                    </th>
-                </tr>
-                <tr *ngFor="let ingreso of ingresos">
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {{ingreso.transaction_id}}
-                    </th>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {{ingreso.sender.names}} {{ingreso.sender.surnames}}
-                    </th>
-                    <th
-                        class="border-t-0 px-6 text-green-600 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        +{{ingreso.amount}}
-                    </th>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {{ingreso.comment}}
-                    </th>
-                    <th
-                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {{ingreso.createdDate}}
-                    </th>
-                </tr>
-
-            </tbody>
-
-        </table>
+<div class="flex p-36 justify-center" *ngIf="hidden_transaction; else content">
+    <div class="info m-2">
+        <h1 class="text-5xl text-gray-600 italic font-semibold">Sin transacciones todavía.</h1>
+        <p class=" text-gray-500 text-center">¿Desea intentarlo con otro email?</p>
     </div>
 </div>
+
+<ng-template #content>
+    <div class="shadow-2xl border rounded-lg">
+        <div class="m-4">
+            <h3 class="font-bold">Transacciones</h3>
+            <!-- <p class="mt-2 text-sm text-gray-400">Tienes {{count}} transacciones realizadas</p> -->
+        </div>
+        <div class="m-5">
+            <table class="items-center bg-transparent w-full border-collapse ">
+                <thead>
+                    <tr class="shadow-md ">
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            ID TRANSACCION
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            USUARIO PAYONE
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            MONTO
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            DESCRIPCIÓN
+                        </th>
+                        <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            FECHA
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let egreso of egresos">
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{egreso.transaction_id}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left ">
+                            {{egreso.receiver.names}} {{egreso.receiver.surnames}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 text-red-600 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            -{{egreso.amount}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{egreso.comment}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{egreso.createdDate}}
+                        </th>
+                    </tr>
+                    <tr *ngFor="let ingreso of ingresos">
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{ingreso.transaction_id}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{ingreso.sender.names}} {{ingreso.sender.surnames}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 text-green-600 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            +{{ingreso.amount}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{ingreso.comment}}
+                        </th>
+                        <th
+                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{ingreso.createdDate}}
+                        </th>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</ng-template>
+</div>
+
+

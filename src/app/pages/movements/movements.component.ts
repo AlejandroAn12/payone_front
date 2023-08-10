@@ -14,6 +14,8 @@ import { TransactionService } from 'src/app/services/transactions.service';
   styleUrls: ['./movements.component.css'],
 })
 export class MovementsComponent {
+  hidden_transaction = false;
+
   public balance!: Balance;
   public transactions!: Transaction;
   public count: number = 0;
@@ -44,10 +46,17 @@ export class MovementsComponent {
   }
 
   getAllTransactions() {
+    // this.hidden_transaction = true;
     this.transactionService.getUserTransactions().subscribe((data: any) => {
+      // console.log(this.egresos.length === 0);
+      if (
+        data.transactions.egresos.length === 0 &&
+        data.transactions.ingresos.length === 0
+      ) {
+        this.hidden_transaction = true;
+      }
       this.egresos = data.transactions.egresos;
       this.ingresos = data.transactions.ingresos;
-      this.count = data.transactions.count;
 
       console.log(data);
       console.log(
