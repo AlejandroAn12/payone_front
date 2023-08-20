@@ -26,7 +26,7 @@ export class TransactionComponent {
   ) {}
 
   public transactionForm = this.fb.group({
-    email: ['', [Validators.required]],
+    email: ['', [Validators.email]],
     amount: ['', [Validators.required]],
     comment: ['', [Validators.required]],
   });

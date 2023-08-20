@@ -7,10 +7,22 @@
  primary color #46dff0 
  secundary color #e90c59
 
+ .color1 {color: #0d2873;}
+.color2 {color: #084bbe;}
+.color3 {color: #08daff;}
+.color4 {color: #0efff9;}
+.color5 {color: #9efff7;}
+
+ .color1 {color: #1d67ca;}
+.color2 {color: #208cd8;}
+.color3 {color: #20aed8;}
+.color4 {color: #9be3e9;}
+.color5 {color: #e4efed;}
+
 */
 
 body {
-    background: #ffffff;
+    /* background: #e4efed; */
     /* background: #1111; */
     padding: 0px;
 }
@@ -18,8 +30,4 @@ body {
 .margen{
     /* margin-top: 80px; */
     padding-top: 5%;
-}
-
-.my-select {
-  @apply py-2 px-4 border rounded-md;
 }

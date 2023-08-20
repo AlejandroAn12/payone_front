@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SplashcreenComponent } from './splashcreen/splashcreen.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { TabsTransferComponent } from './tabs-transfer/tabs-transfer.component';
+import { DownloadpageComponent } from '../pages/downloadpage/downloadpage.component';
 
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, SplashcreenComponent],
+  declarations: [NavbarComponent, FooterComponent, SplashcreenComponent, TabsTransferComponent, DownloadpageComponent],
   imports: [BrowserModule, CommonModule, HttpClientModule, RouterModule],
-  exports: [NavbarComponent, FooterComponent, SplashcreenComponent],
+  exports: [NavbarComponent, FooterComponent, SplashcreenComponent, TabsTransferComponent, DownloadpageComponent],
 })
 export class SharedModule {}

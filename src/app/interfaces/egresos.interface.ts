@@ -7,4 +7,5 @@ export interface Egresos {
   createdDate: Date;
   sender: User;
   receiver: User;
+  pdfFileName: string
 }

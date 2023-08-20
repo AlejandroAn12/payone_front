@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MovementsComponent } from './movements/movements.component';
 import { SendComponent } from './transaction/send/send.component';
 import { RequestComponent } from './transaction/request/request.component';
+import { DownloadpageComponent } from './downloadpage/downloadpage.component';
 
 // Mantenimientos
 
@@ -41,6 +42,11 @@ const childRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     data: { titulo: 'Busquedas' },
+  },
+  {
+    path: 'transactions/:id/download',
+    component: DownloadpageComponent,
+    data: { titulo: 'Descarga' },
   },
 ];
 

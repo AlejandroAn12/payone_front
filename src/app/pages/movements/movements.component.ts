@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Egresos } from 'src/app/interfaces/egresos.interface';
 import { Ingresos } from 'src/app/interfaces/ingresos.interface';
 import { Transaction } from 'src/app/interfaces/transaction.interface';
@@ -26,12 +28,18 @@ export class MovementsComponent {
   constructor(
     private balanceService: BalanceService,
     private transactionService: TransactionService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {
     this.user = authService.user;
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      const id = params['id'];
+      this.downloadPdf(id);
+    });
     this.getAllTransactions();
     this.balanceService.getBalanceUserLogged().subscribe(
       (resp: any) => {
@@ -68,5 +76,10 @@ export class MovementsComponent {
         this.count
       );
     });
+  }
+
+  downloadPdf(transactionId: string): void {
+    // Realiza una llamada HTTP para obtener el PDF del backend
+    this.transactionService.downloadPdf(transactionId)
   }
 }

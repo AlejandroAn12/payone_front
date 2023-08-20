@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="assets/img/logo.ico">
 <script src="https://kit.fontawesome.com/bd175ada3d.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
   <app-root></app-root>
@@ -20,5 +21,32 @@
       }
     };
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"></script>
+  <!-- <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      Alpine.data('registrationSteps', () => ({
+        currentStep: 1,
+        nextStep() {
+          this.currentStep++;
+        },
+        prevStep() {
+          this.currentStep--;
+        }
+      }));
+    });
+  </script> -->
+
+  <script>
+    // Initialization for ES Users
+      import {
+        Modal,
+        Ripple,
+        initTE,
+      } from "tw-elements";
+
+      initTE({ Modal, Ripple });
+  </script>
+
 </body>
 </html>

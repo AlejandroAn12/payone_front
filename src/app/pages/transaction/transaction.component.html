@@ -1,115 +1,102 @@
 <div class="margen">
 
-  <div class="flex p-3 justify-center shadow-md items-center bg-gray-200">
-    <div class="m-4 flex flex-grow justify-center" id="but">
-      <button routerLink="/myaccount/transfer"
-        class=" text-blue-950 bg-yellow-400 font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-yellow-400  hover:-translate-y-1 hover:scale-110 hover:bg-yellow-200 hover:border-transparent duration-300 lg: mr-7">
-        Enviar
-      </button>
-      <button routerLink="/myaccount/transfer/request"
-        class=" text-blue-950 bg-yellow-400 font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-yellow-400  hover:-translate-y-1 hover:scale-110 hover:bg-yellow-200 hover:border-transparent duration-300 lg: mr-7">
-        Socilitar
-      </button>
-    </div>
-  </div>
+  <!-- BOTONES -->
+<app-tabs-transfer></app-tabs-transfer>
 
+  <!-- CUERPO - BODY -->
   <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 
     <div class="flex flex-grow justify-center">
-      <select class="my-select">
+      <!-- <select class="my-select">
         <option value="Selecciona una opción">Selecciona una opción</option>
         <option (click)="toggleFormulario('send_email')">Enviar con email</option>
         <option value="Enviar con código">Enviar con código</option>
-      </select>
+      </select> -->
       <button (click)="toggleFormulario('send_email')"
-        class=" text-blue-950 bg-yellow-400 font-bold shadow-xl py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-yellow-400  hover:-translate-y-1 hover:scale-110 hover:bg-yellow-200 hover:border-transparent duration-300 lg: mr-7">Email</button>
+        class=" text-blue-950 bg-[#9be3e9] font-bold shadow-xl py-2.5 px-5 rounded-s-3xl transition ease-in-out delay-150    hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:border-transparent duration-300 ">Send to email</button>
       <button (click)="toggleFormulario('send_codigo')"
-        class=" text-blue-950 bg-blue-500 shadow-xl font-bold py-2.5 px-5 rounded-full transition ease-in-out delay-150  border-blue-400  hover:-translate-y-1 hover:scale-110 hover:bg-blue-200 hover:border-transparent duration-300 lg: mr-7">Código</button>
+        class=" text-blue-950 bg-[#20aed8] shadow-xl font-bold py-2.5 px-5 rounded-e-3xl transition ease-in-out delay-150    hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:border-transparent duration-300 ">Send to code</button>
     </div>
 
     <!-- EMAIL -->
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form *ngIf="send_email" (ngSubmit)="send_transfer_email()" [formGroup]="transactionForm" autocomplete="off"
-        class="space-y-6" method="POST">
-        <!-- select-example.component.html -->
+        class="space-y-6">
         <div>
           <div class="flex flex-grow justify-between">
-            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Ingresa el email del destinatario</label>
-            <!-- <div class="text-sm">
-              <a routerLink="/forgot-password" class="font-semibold text-indigo-600 hover:text-indigo-500">Tienes un
-                código?</a>
-            </div> -->
+            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email del usuario 😁</label>
           </div>
           <div class="mt-2">
-            <input formControlName="email" id="email" name="email" type="text"
-              placeholder="Email del usuario" autocomplete="Destinatario" required
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input formControlName="email" id="email" name="email" type="text" placeholder="Email"
+              autocomplete="Destinatario" required
+              class="block w-full italic rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
-
+    
         <div>
-          <label for="amount" class="block text-sm font-medium leading-6 text-gray-900">¿Cuánto dinero?</label>
+          <label for="amount" class="block text-sm font-medium leading-6 text-gray-900">¿Cuánto dinero deseas transferir? 🤑</label>
           <div class="mt-2">
-            <input formControlName="amount" id="amount" name="amount" type="text" placeholder="$0.00"
-              autocomplete="Monto" required
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input formControlName="amount" id="amount" name="amount" type="number" placeholder="$0.00" autocomplete="Monto"
+              required
+              class="block w-full italic rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
-
+    
         <div>
-          <label for="comment" class="block text-sm font-medium leading-6 text-gray-900">¿Deseas dejarle algún
-            mensaje?</label>
+          <label for="comment" class="block text-sm font-medium leading-6 text-gray-900">¿Quieres enviarle algún mensaje? 😏</label>
           <div class="mt-2">
-            <input formControlName="comment" id="comment" name="comment" type="text" autocomplete="Mensaje" required
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input formControlName="comment" id="comment" name="comment" type="text" placeholder="Enviale un mensaje por aquí..." autocomplete="Mensaje" required
+              class="block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
-
+    
         <div>
           <button type="submit"
-            class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Transferir</button>
+            class="flex w-full justify-center rounded-full bg-[#20aed8] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#208cd8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:text-gray-800 hover:border duration-300 ">Transferir ahora</button>
         </div>
       </form>
-
+    
       <!--FORMULARIO POR CODIGO  -->
-      <form *ngIf="send_codigo" (ngSubmit)="send_transfer_by_code()" [formGroup]="transactionFormCode" autocomplete="off" class="space-y-6" method="POST">
+      <form *ngIf="send_codigo" (ngSubmit)="send_transfer_by_code()" [formGroup]="transactionFormCode" autocomplete="off"
+        class="space-y-6" method="POST">
         <div>
           <div class="flex flex-grow justify-between">
-            <label for="code" class="block text-sm font-medium leading-6 text-gray-900">Ingresa el código del destinatario</label>
-            <!-- <div class="text-sm">
-                    <a routerLink="/forgot-password" class="font-semibold text-indigo-600 hover:text-indigo-500">Tienes un
-                      código?</a>
-                  </div> -->
+            <label for="code" class="block text-sm font-medium leading-6 text-gray-900">Código usuario 😁</label>
           </div>
           <div class="mt-2">
-            <input formControlName="code" id="code" name="code" type="text" placeholder="Código de usuario"
-              autocomplete="Destinatario" required
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input formControlName="code" id="code" name="code" type="text" placeholder="Código" autocomplete="Código"
+              required
+              class="block w-full italic rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
-
+        
         <div>
-          <label for="amount" class="block text-sm font-medium leading-6 text-gray-900">¿Cuánto dinero?</label>
+          <label for="amount" class="block text-sm font-medium leading-6 text-gray-900">¿Cuánto dinero deseas transferir?
+            🤑</label>
           <div class="mt-2">
-            <input formControlName="amount" id="amount" name="amount" type="text" placeholder="$0.00" autocomplete="Monto" required
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input formControlName="amount" id="amount" name="amount" type="number" placeholder="$0.00" autocomplete="Monto"
+              required
+              class="block w-full italic rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
-
+        
         <div>
-          <label for="comment" class="block text-sm font-medium leading-6 text-gray-900">¿Deseas dejarle algún
-            mensaje?</label>
+          <label for="comment" class="block text-sm font-medium leading-6 text-gray-900">¿Quieres enviarle algún mensaje?
+            😏</label>
           <div class="mt-2">
-            <input formControlName="comment" id="comment" name="comment" type="text" autocomplete="Mensaje" required
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input formControlName="comment" id="comment" name="comment" type="text"
+              placeholder="Enviale un mensaje por aquí..." autocomplete="Mensaje" required
+              class="block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
           </div>
         </div>
-
+        
         <div>
           <button type="submit"
-            class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Transferir</button>
+            class="flex w-full justify-center rounded-full bg-[#20aed8] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#208cd8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:text-gray-800 hover:border duration-300 ">Transferir
+            ahora</button>
         </div>
       </form>
     </div>
+
   </div>
 </div>
