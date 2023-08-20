@@ -105,6 +105,8 @@
                             {{ingreso.createdDate}}
                         </th>
                         <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            <button (click)="downloadPdf(ingreso.transaction_id)">Descargar PDF</button>
+
                             <!-- <a [href]="downloadPdf(ingreso.transaction_id)" download="transaccion_{{ ingreso.transaction_id }}.pdf">Descargar PDF</a> -->
                         </th>
                     </tr>
