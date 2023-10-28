@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { Transaction } from '../interfaces/transaction.interface';
+import * as moment from 'moment';
+import {format} from 'date-fns'
 import { Observable, timestamp } from 'rxjs';
 
 
@@ -15,10 +17,9 @@ const base_url = environment.base_url;
   providedIn: 'root',
 })
 export class TransactionService {
-
-  private date = new Date();
-  private timestamp = this.date.getMilliseconds(); // Formato de fecha y hora
-    private pdfName = `transaccion_${this.timestamp}.pdf`; // Nombre del archivo PDF
+  // private date = new Date();
+  public timestamp = format(new Date(), 'yyyyMMdd_HHmmss'); // Genera un timestamp único en formato "YYYYMMDD_HHmmss"
+  private pdfName = `transaccion_${this.timestamp}`; // Nombre del archivo PDF
 
   private transaction!: Transaction;
 

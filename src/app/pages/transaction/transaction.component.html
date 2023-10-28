@@ -1,7 +1,7 @@
 <div class="margen">
 
   <!-- BOTONES -->
-<app-tabs-transfer></app-tabs-transfer>
+<!-- <app-tabs-transfer></app-tabs-transfer> -->
 
   <!-- CUERPO - BODY -->
   <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -24,13 +24,33 @@
         class="space-y-6">
         <div>
           <div class="flex flex-grow justify-between">
-            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email del usuario 😁</label>
+            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Cuenta destino</label>
           </div>
-          <div class="mt-2">
+
+          <div class="input-group">
+            <select class="form-control" formControlName="email" (change)="onUserSelectionChange($event)" [disabled]="!contacts || contacts.length === 0">
+              <option value="">Seleccione un usuario</option>
+              <option *ngFor="let contact of contacts" [value]="contact.id_contact.email">
+                {{ contact.id_contact.names }} {{ contact.id_contact.surnames }}
+              </option>
+            </select>
+          </div>
+          
+            <!-- <div class="input-group">
+              <select class="form-control" formControlName="email" (change)="onUserSelectionChange($event)">
+                <option value="">Seleccione un usuario</option>
+                <option *ngFor="let user of users" [value]="user.email">
+                  {{ user.names }} {{ user.surnames }}
+                </option>
+              </select>
+            </div> -->
+          
+        
+          <!-- <div class="mt-2">
             <input formControlName="email" id="email" name="email" type="text" placeholder="Email"
               autocomplete="Destinatario" required
               class="block w-full italic rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
+          </div> -->
         </div>
     
         <div>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Socket, io } from 'socket.io-client';
 import { Egresos } from 'src/app/interfaces/egresos.interface';
 import { Ingresos } from 'src/app/interfaces/ingresos.interface';
 import { Transaction } from 'src/app/interfaces/transaction.interface';
@@ -9,13 +10,16 @@ import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { BalanceService } from 'src/app/services/balance.service';
 import { TransactionService } from 'src/app/services/transactions.service';
+import { environment } from 'src/environments/environments';
+
+const base_url = environment.base_url;
 
 @Component({
   selector: 'app-movements',
   templateUrl: './movements.component.html',
   styleUrls: ['./movements.component.css'],
 })
-export class MovementsComponent {
+export class MovementsComponent implements OnInit {
   hidden_transaction = false;
 
   public balance!: Balance;
@@ -36,11 +40,14 @@ export class MovementsComponent {
   }
 
   ngOnInit(): void {
+    
+    this.getAllTransactions();
+
     this.route.params.subscribe((params) => {
       const id = params['id'];
       this.downloadPdf(id);
     });
-    this.getAllTransactions();
+    // this.getAllTransactions();
     this.balanceService.getBalanceUserLogged().subscribe(
       (resp: any) => {
         // console.log('BALANCE', resp)
@@ -80,6 +87,6 @@ export class MovementsComponent {
 
   downloadPdf(transactionId: string): void {
     // Realiza una llamada HTTP para obtener el PDF del backend
-    this.transactionService.downloadPdf(transactionId)
+    this.transactionService.downloadPdf(transactionId);
   }
 }
