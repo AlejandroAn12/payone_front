@@ -1,5 +1,4 @@
-<div class="flex flex-col justify-center">
-    <!-- BANNER USERNAME -->
+<!-- <div class="flex flex-col justify-center">
     <div class="flex flex-grow justify-center mt-36 mb-6">
     
         <div class="flex bg-white p-3 border rounded-md shadow-md">
@@ -26,7 +25,6 @@
                     <div class="font-semibold text-gray-500  text-xl mb-2">Transferir</div>
                     <div class="flex justify-center">
                         <img src="assets/img/send_money.jpg" alt="send_money">
-                    <!-- <i class="fa-solid fa-money-bill-transfer text-[#41d17d] text-8xl"></i> -->
 
                     </div>
                 </div>
@@ -40,7 +38,6 @@
                     <div class="font-semibold text-gray-500 justify-center text-xl mb-2">Mi fondo</div>
                     <div class="flex justify-center">
                         <img src="assets/img/balance.jpg" alt="balance">
-                        <!-- <i class="fa-solid fa-wallet text-[#41d17d] text-8xl"></i> -->
                     </div>
                 </div>
             </a>
@@ -53,7 +50,6 @@
                     <div class="font-semibold text-gray-500  text-xl mb-2">Movimientos</div>
                     <div class="flex justify-center">
                         <img src="assets/img/movements.jpg" alt="movements">
-                        <!-- <i class="fa-solid fa-file-invoice text-[#41d17d] text-8xl"></i> -->
                     </div>
                 </div>
             </a>
@@ -61,4 +57,19 @@
     
     </div>
 
-</div>
+</div> -->
+
+
+<div class="container-dash">
+    <h3 class="text-bienvenida">{{getGreetingMessage()}}, {{user.names}}</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="body text-center">
+                <h4>TIENES DISPONIBLE</h4>
+                <h4>{{balance}}</h4>
+                <p>¡Explora Quipay! y empieza a transferir!</p>
+                <button type="button" routerLink="/myaccount/transfer" class="btn btn-dash">Transferir ahora</button>
+            </div>
+        </div>
+    </div>

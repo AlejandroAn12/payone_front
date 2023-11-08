@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,9 +8,13 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  constructor(private authService: AuthService) { }
+  public user!: User;
+  constructor(private authService: AuthService) { 
+    this.user = authService.user;
+  }
   
   public notificaciones: any;
+
 
   mostrarModal: boolean = false;
   notificacionesPendientes: boolean = false;

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import swal from 'sweetalert2';
 
@@ -16,6 +17,8 @@ export class LoginComponent {
   public form_submitted = false;
   loginForm: FormGroup;
 
+
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -23,7 +26,7 @@ export class LoginComponent {
   ) {
     this.loginForm = this.fb.group({
       email: [
-        'alejandroan@incodek.com',
+        'test@test.com',
         [Validators.required, Validators.email],
       ],
       password: ['Test1234', [Validators.required, Validators.minLength(3)]],

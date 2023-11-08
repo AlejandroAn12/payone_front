@@ -1,3 +1,4 @@
+import { Transaction } from '../models/transaction.model';
 import { User } from '../models/user.model';
 
 export interface Egresos {
@@ -6,6 +7,7 @@ export interface Egresos {
   comment: string;
   createdDate: Date;
   sender: User;
+  type_movement: any;
   receiver: User;
   pdfFileName: string
 }

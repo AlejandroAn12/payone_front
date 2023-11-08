@@ -9,13 +9,46 @@
 </div>
 
 <ng-template #content>
-  <div class="h-screen">
+  
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="col-md-3">
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
+      <div class="header text-center">
+        <img src="assets/img/quipay_banner_3.svg" alt="banner" class="img-fluid">
+            <div class="title-login">
+                <p>Welcome</p>
+            </div>
+            <div class="subtitle-login">
+                <p>Sign in to your QuiPay! account</p>
+            </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="forwod-password">
+        <a href="">¿Olvidaste tu contraseña?</a>
+      </div>
+
+      <div class="form-floating">
+        <input formControlName="email" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+    
+      <div class="form-group">
+        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-login">Sign in</button>
+        <a class="info-register" href="#">Dont have account?</a>
+      </div>
+    </form>
+  </div>
+</div>
+  <!-- <div class="h-screen">
     <div class="sm:mx-auto  sm:w-full sm:max-w-sm">
       <div class="flex flex-grow justify-center">
       <h2 class="mt-20 text-5xl text-center font-extrabold text-[#084bbe]">Qui</h2><h2 class="mt-20 text-5xl text-center font-extrabold text-[#08daff]">Pay!</h2>
 
       </div>
-      <!-- <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Incodek - PayFast"> -->
+      
       <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-400">¡Hola, te damos la bienvenida!
       </h2>
     </div>
@@ -58,7 +91,7 @@
           ahora!</a>
       </p>
     </div>
-  </div>
+  </div> -->
 </ng-template>
 <app-footer></app-footer>
 

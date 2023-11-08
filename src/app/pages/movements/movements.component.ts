@@ -70,6 +70,9 @@ export class MovementsComponent implements OnInit {
       ) {
         this.hidden_transaction = true;
       }
+
+      this.egresos = data.transactions.egresos.type_movement;
+
       this.egresos = data.transactions.egresos;
       this.ingresos = data.transactions.ingresos;
 
@@ -80,7 +83,9 @@ export class MovementsComponent implements OnInit {
         'ingresos',
         this.ingresos,
         'count',
-        this.count
+        this.count,
+
+        data.transactions.egresos.type_movement
       );
     });
   }

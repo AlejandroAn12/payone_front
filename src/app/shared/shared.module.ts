@@ -9,12 +9,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TabsTransferComponent } from './tabs-transfer/tabs-transfer.component';
 import { DownloadpageComponent } from '../pages/downloadpage/downloadpage.component';
 import { NotificationModalComponent } from './notification-modal/notification-modal.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, SplashcreenComponent, TabsTransferComponent, DownloadpageComponent, NotificationModalComponent],
+  declarations: [NavbarComponent, FooterComponent, SplashcreenComponent, TabsTransferComponent, DownloadpageComponent, NotificationModalComponent, SidebarComponent],
   imports: [BrowserModule, CommonModule, HttpClientModule, RouterModule],
-  exports: [NavbarComponent, FooterComponent, SplashcreenComponent, TabsTransferComponent, DownloadpageComponent, NotificationModalComponent],
+  exports: [NavbarComponent, FooterComponent, SplashcreenComponent, TabsTransferComponent, DownloadpageComponent, NotificationModalComponent, SidebarComponent],
 })
 export class SharedModule {}

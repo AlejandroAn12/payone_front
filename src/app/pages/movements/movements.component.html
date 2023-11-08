@@ -4,7 +4,7 @@
     
         <div class="flex bg-white p-3 shadow-md">
             <div>
-                <h1 class="text-2xl font-extrabold">Últimos Movimientos </h1>
+                <h1 class="text-2xl font-extrabold">Registro de actividad </h1>
             </div>
             <!-- <div class="ml-1.5">
                 <h1 class="text-lg font-semibold">{{user.names}} 😜</h1>
@@ -12,16 +12,7 @@
         </div>
     
     </div>
-<!-- <div class="bg-green-400">
-    <div class="flex m-6 justify-center">
-        <input type="text" class="border rounded-full w-96 border-transparent shadow-md"
-            placeholder="Buscar transacción por email">
-        <button
-            class="bg-green-400 border shadow-md rounded-full w-10 h-10 ml-1 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 lg: mr-7">
-            <i class="fa-solid text-white fa-magnifying-glass"></i>
-        </button>
-    </div>
-</div> -->
+
 
 <div class="flex flex-col" *ngIf="hidden_transaction; else content">
     <div class="info mt-7">
@@ -39,85 +30,50 @@
 </div>
 
 <ng-template #content>
-    <div class=" ml-2 mr-2 border rounded-lg">
-        <div class="m-5">
-
-                        <div class="flex flex-grow justify-start mt-11 mb-6">
-                        
-                            <div class="flex bg-white p-3 border rounded-md">
-                                <div>
-                                    <h1 class="text-lg italic text-green-400 font-semibold">INGRESOS </h1>
-                                </div>
-                            </div>
-                        
-                        </div>
-                        
-                        
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">TRANSACCION</th>
-                                    <th scope="col">MONTO</th>
-                                    <th scope="col">CONCEPTO</th>
-                                    <th scope="col">FECHA</th>
-                        
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let ingreso of ingresos">
-                                    <td>{{ingreso.transaction_id}}</td>
-                                    <td><span
-                                            class="inline-flex items-center rounded-md bg-green-400 px-2 py-1 text-xs font-semibold text-white ring-1 ring-inset ring-red-600/10">+{{ingreso.amount}}</span>
-                                    </td>
-                                    <td>{{ingreso.comment}}</td>
-                                    <td>{{ingreso.createdDate}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-            <hr>
-
-            <div class="flex flex-grow justify-start mt-11 mb-6">
+    <div class="filters buttons">
+        <label for="filters">Filters</label>
+        <select name="filters" id="filters">
+            <option value="">All</option>
+            <option value="">Egresos</option>
+            <option value="">Ingresos</option>
             
-                <div class="flex bg-white p-3 border rounded-md">
-                    <div>
-                        <h1 class="text-lg italic text-red-400 font-semibold">EGRESOS </h1>
-                    </div>
-                </div>
-            
-            </div>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">TRANSACCION</th>
-                        <th scope="col">MONTO</th>
-                        <th scope="col">CONCEPTO</th>
-                        <th scope="col">FECHA</th>
-                        <th scope="col">COMPROBANTE</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let egreso of egresos">
-                        <td scope="row">{{egreso.transaction_id}}</td>
-                        <td><span
-                            class="inline-flex items-center rounded-md bg-red-400 px-2 py-1 text-xs font-semibold text-white ring-1 ring-inset ring-red-600/10">-{{egreso.amount}}</span></td>
-                        <td>{{egreso.comment}}</td>
-                        <td>{{egreso.createdDate}}</td>
-                        <th class="border-t-0 px-6 align-middle border-l-0 text-center border-r-0 text-xs whitespace-nowrap p-4" tooltip="Descargar">
-                            <button (click)="downloadPdf(egreso.transaction_id)"><i class="fa-solid fa-file-arrow-down text-2xl"
-                                    style="color: #2bdec9;"></i></button>
-                        </th>
-
-                    </tr>
-                    
-                </tbody>
-            </table>
-
-            <hr>
-        </div>
+        </select>
     </div>
+
+    <div class="buttons flex flex-grow">
+        <div class="range-date">
+            <label for="date">Desde</label>
+        <input type="date" name="date-start" class="input-date" id="date-start">
+        <label for="date-end">Hasta</label>
+        <input type="date" name="date-end" class="input-date" id="date-end">
+        </div>
+        <button type="submit" class="btn btn-color-basic">Buscar</button>
+
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">N° Transaccion</th>
+            <th scope="col">Monto</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Tipo de movimiento</th>
+            <th scope="col">Fecha de transacción</th>
+            <th scope="col">Comprobante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let egreso of egresos">
+            <th scope="row">{{egreso.transaction_id}}</th>
+            <td>${{egreso.amount}}</td>
+            <td>{{egreso.comment}}</td>
+            <td>{{egreso.type_movement}}</td>
+            <td>{{egreso.createdDate}}</td>
+            <td><button class="btn" (click)="downloadPdf(egreso.transaction_id)"><i class="fa-solid fa-file-arrow-down text-2xl"
+                style="color: #2bdec9;"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
 </ng-template>
 </div>
 

@@ -1,122 +1,67 @@
-<div class="margen">
-
-  <!-- BOTONES -->
-<!-- <app-tabs-transfer></app-tabs-transfer> -->
-
-  <!-- CUERPO - BODY -->
-  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+<div class="card text-center col-md-3">
+  <div class="card-header">
+    Nueva Transferencia
+  </div>
+  <div class="card-body">
 
     <div class="flex flex-grow justify-center">
-      <!-- <select class="my-select">
-        <option value="Selecciona una opción">Selecciona una opción</option>
-        <option (click)="toggleFormulario('send_email')">Enviar con email</option>
-        <option value="Enviar con código">Enviar con código</option>
-      </select> -->
       <button (click)="toggleFormulario('send_email')"
-        class=" text-blue-950 bg-[#9be3e9] font-bold shadow-xl py-2.5 px-5 rounded-s-3xl transition ease-in-out delay-150    hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:border-transparent duration-300 ">Send to email</button>
+        class="btn btn-color-basic">Send to email</button>
       <button (click)="toggleFormulario('send_codigo')"
-        class=" text-blue-950 bg-[#20aed8] shadow-xl font-bold py-2.5 px-5 rounded-e-3xl transition ease-in-out delay-150    hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:border-transparent duration-300 ">Send to code</button>
+        class="btn btn-color-basic">Send to code</button>
     </div>
 
-    <!-- EMAIL -->
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form *ngIf="send_email" (ngSubmit)="send_transfer_email()" [formGroup]="transactionForm" autocomplete="off"
-        class="space-y-6">
-        <div>
-          <div class="flex flex-grow justify-between">
-            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Cuenta destino</label>
-          </div>
+    <div class="row flex text-center">
+      <div>
 
-          <div class="input-group">
-            <select class="form-control" formControlName="email" (change)="onUserSelectionChange($event)" [disabled]="!contacts || contacts.length === 0">
+        <!-- FORMULARIO POR CONTACTO -->
+
+        <form class="transer-form" *ngIf="send_email" (ngSubmit)="send_transfer_email()" [formGroup]="transactionForm" autocomplete="off">
+          <label for="select" class="select-title">Cuenta destino</label>
+          <div class="form-floating mb-3">
+            <select id="select" class="form-control" formControlName="email" (change)="onUserSelectionChange($event)" [disabled]="!contacts || contacts.length === 0">
               <option value="">Seleccione un usuario</option>
               <option *ngFor="let contact of contacts" [value]="contact.id_contact.email">
                 {{ contact.id_contact.names }} {{ contact.id_contact.surnames }}
               </option>
             </select>
           </div>
-          
-            <!-- <div class="input-group">
-              <select class="form-control" formControlName="email" (change)="onUserSelectionChange($event)">
-                <option value="">Seleccione un usuario</option>
-                <option *ngFor="let user of users" [value]="user.email">
-                  {{ user.names }} {{ user.surnames }}
-                </option>
-              </select>
-            </div> -->
-          
-        
-          <!-- <div class="mt-2">
-            <input formControlName="email" id="email" name="email" type="text" placeholder="Email"
-              autocomplete="Destinatario" required
-              class="block w-full italic rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div> -->
-        </div>
-    
-        <div>
-          <label for="amount" class="block text-sm font-medium leading-6 text-gray-900">¿Cuánto dinero deseas transferir? 🤑</label>
-          <div class="mt-2">
-            <input formControlName="amount" id="amount" name="amount" type="number" placeholder="$0.00" autocomplete="Monto"
-              required
-              class="block w-full italic rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
-        </div>
-    
-        <div>
-          <label for="comment" class="block text-sm font-medium leading-6 text-gray-900">¿Quieres enviarle algún mensaje? 😏</label>
-          <div class="mt-2">
-            <input formControlName="comment" id="comment" name="comment" type="text" placeholder="Enviale un mensaje por aquí..." autocomplete="Mensaje" required
-              class="block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
-        </div>
-    
-        <div>
-          <button type="submit"
-            class="flex w-full justify-center rounded-full bg-[#20aed8] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#208cd8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:text-gray-800 hover:border duration-300 ">Transferir ahora</button>
-        </div>
-      </form>
-    
-      <!--FORMULARIO POR CODIGO  -->
-      <form *ngIf="send_codigo" (ngSubmit)="send_transfer_by_code()" [formGroup]="transactionFormCode" autocomplete="off"
-        class="space-y-6" method="POST">
-        <div>
-          <div class="flex flex-grow justify-between">
-            <label for="code" class="block text-sm font-medium leading-6 text-gray-900">Código usuario 😁</label>
-          </div>
-          <div class="mt-2">
-            <input formControlName="code" id="code" name="code" type="text" placeholder="Código" autocomplete="Código"
-              required
-              class="block w-full italic rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
-        </div>
-        
-        <div>
-          <label for="amount" class="block text-sm font-medium leading-6 text-gray-900">¿Cuánto dinero deseas transferir?
-            🤑</label>
-          <div class="mt-2">
-            <input formControlName="amount" id="amount" name="amount" type="number" placeholder="$0.00" autocomplete="Monto"
-              required
-              class="block w-full italic rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
-        </div>
-        
-        <div>
-          <label for="comment" class="block text-sm font-medium leading-6 text-gray-900">¿Quieres enviarle algún mensaje?
-            😏</label>
-          <div class="mt-2">
-            <input formControlName="comment" id="comment" name="comment" type="text"
-              placeholder="Enviale un mensaje por aquí..." autocomplete="Mensaje" required
-              class="block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
-        </div>
-        
-        <div>
-          <button type="submit"
-            class="flex w-full justify-center rounded-full bg-[#20aed8] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#208cd8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:text-gray-800 hover:border duration-300 ">Transferir
-            ahora</button>
-        </div>
-      </form>
-    </div>
 
+          <div class="form-floating mb-3">
+            <input formControlName="amount" type="number" class="form-control" id="floatingInput" placeholder="DGYEA-85">
+            <label for="floatingInput">Cuánto deseas transferir?</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input formControlName="comment" type="text" class="form-control" id="floatingInput" placeholder="DGYEA-85">
+            <label for="floatingInput">Descripción</label>
+          </div>
+
+          <button type="submit" [disabled]="transactionForm.invalid" class="btn btn-color-basic">Transferir ahora</button>
+        </form>
+
+        <!-- FORMULARIO POR CODIGO -->
+        <form *ngIf="send_codigo" (ngSubmit)="send_transfer_by_code()" [formGroup]="transactionFormCode" autocomplete="off">
+          <label for="floatingInput" class="select-title">Cuenta destino</label>
+          <div class="form-floating mb-3">
+            <input formControlName="code" type="text" class="form-control" id="floatingInput" placeholder="DGYEA-85">
+            <label for="floatingInput">Ingrese el codigo de la cuenta destino</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input formControlName="amount" type="number" class="form-control" id="floatingInput" placeholder="DGYEA-85">
+            <label for="floatingInput">Cuánto deseas transferir?</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input formControlName="comment" type="text" class="form-control" id="floatingInput" placeholder="DGYEA-85">
+            <label for="floatingInput">Descripción</label>
+          </div>
+
+          <button type="submit" [disabled]="transactionFormCode.invalid" class="btn btn-color-basic">Transferir ahora</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
+

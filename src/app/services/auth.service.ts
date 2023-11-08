@@ -76,12 +76,18 @@ export class AuthService {
       }),
       catchError((error) => {
         return swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: `${error}`,
-          showConfirmButton: false,
-          timer: 1500,
+          icon: "error",
+          title: "Oops...",
+          text: `Sin conexión con el servidor, intente más tarde, ${error}`
+          // footer: '<a href="#">Why do I have this issue?</a>'
         });
+        // swal.fire({
+        //   position: 'top-end',
+        //   icon: 'error',
+        //   title: `${error}`,
+        //   showConfirmButton: false,
+        //   timer: 1500,
+        // });
       })
     );
   }

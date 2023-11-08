@@ -9,7 +9,6 @@ import { UserInterface } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
 import { ContactsService } from 'src/app/services/contacts.service';
 import { ContactUserInterface } from 'src/app/interfaces/contact_user.interface';
-import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-transaction',
@@ -25,6 +24,7 @@ export class TransactionComponent {
 
   public form_submitted = false;
   public form_submitted_code = false;
+  btn_submitted = false;
 
   send_email: boolean = true;
   send_codigo: boolean = false;
@@ -35,6 +35,14 @@ export class TransactionComponent {
     private readonly userService: UserService,
     private readonly contactUserService: ContactsService
   ) {}
+
+  swalWithBootstrapButtons = swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger',
+    },
+    buttonsStyling: false,
+  });
 
   // public userForm = this.fb.group({
   //   selectedUserId: [''], // Este campo contendrá el ID del usuario seleccionado
@@ -53,59 +61,120 @@ export class TransactionComponent {
     comment: ['', [Validators.required]],
   });
 
+  // send_transfer_email() {
+  //   this.form_submitted = true;
+
+  //   if (this.transactionForm.invalid) {
+  //     return;
+  //   }
+  //   this.transactionService
+  //     .new_transaction_by_email(this.transactionForm?.value)
+  //     .subscribe(
+  //       (resp: any) => {
+  //         console.log('DATOS ENVIADOS', resp);
+
+  //         if (
+  //           resp.status === ERROR_TYPE.UNAUTHORIZED ||
+  //           resp.status === ERROR_TYPE.BADREQUEST ||
+  //           resp.status === ERROR_TYPE.NOTFOUND
+  //         ) {
+  //           swal.fire({
+  //             position: 'top-end',
+  //             icon: 'error',
+  //             title: 'Oops...',
+  //             text: `${resp.message}`,
+  //             showConfirmButton: false,
+  //             timer: 1500,
+  //           });
+  //         } else {
+  //           console.log('TRANSACCION ENVIADA');
+
+  //           swal.fire({
+  //             position: 'top-end',
+  //             icon: 'success',
+  //             title: `Transacción exitosa`,
+  //             text: `${resp.message}`,
+  //             showConfirmButton: false,
+  //             timer: 1500,
+  //           });
+
+  //         }
+  //       },
+  //       (err) => {
+  //         //Si sucede un error
+  //         console.warn(err);
+  //         swal.fire('Error', 'err0r', 'error');
+  //       }
+  //     );
+
+  // }
+
   send_transfer_email() {
     this.form_submitted = true;
-    // console.log(this.transactionForm.value);
 
     if (this.transactionForm.invalid) {
       return;
     }
-
-    // Obtiene el valor de selectedUserId desde el formulario
-    // const selectedUserId = this.transactionForm.get('email')?.value;
-
-    // Otros datos del formulario, como monto, descripción, etc.
-    // const transactionData = {
-    //   email: selectedUserId, // Agrega el usuario seleccionado al objeto de datos de la transacción
-    //   // Otras propiedades del formulario
-    // };
-
-    this.transactionService
-      .new_transaction_by_email(this.transactionForm?.value)
-      .subscribe(
-        (resp: any) => {
-          //  this.transactionForm.get('selectedUserId')?.value;
-          console.log('DATOS ENVIADOS', resp);
-
-          if (
-            resp.status === ERROR_TYPE.UNAUTHORIZED ||
-            resp.status === ERROR_TYPE.BADREQUEST ||
-            resp.status === ERROR_TYPE.NOTFOUND
-          ) {
-            swal.fire({
-              position: 'top-end',
-              icon: 'error',
-              title: `${resp.message}`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          } else {
-            console.log('TRANSACCION ENVIADA');
-            swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: `${resp.message}`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        },
-        (err) => {
-          //Si sucede un error
-          console.warn(err);
-          swal.fire('Error', 'err0r', 'error');
+    /** SWEETALERT PARA CONTROLAR EL ENVIO DE LA TRANSACCION */
+    this.swalWithBootstrapButtons
+      .fire({
+        title: 'Estás seguro?',
+        text: `Deseas enviar $${this.transactionForm.value.amount} a ${this.transactionForm.value.email}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.transactionService
+            .new_transaction_by_email(this.transactionForm?.value)
+            .subscribe(
+              (resp: any) => {
+                console.log('DATOS ENVIADOS', resp);
+                if (
+                  resp.status === ERROR_TYPE.UNAUTHORIZED ||
+                  resp.status === ERROR_TYPE.BADREQUEST ||
+                  resp.status === ERROR_TYPE.NOTFOUND
+                ) {
+                  swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${resp.message}`,
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                } else {
+                  console.log('TRANSACCION ENVIADA');
+                }
+              },
+              (err) => {
+                //Si sucede un error
+                console.warn(err);
+                swal.fire('Error', 'err0r', 'error');
+              }
+            );
+          this.swalWithBootstrapButtons.fire({
+            title: 'Transferencia enviada exitosamente!',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+          this.swalWithBootstrapButtons.fire({
+            title: 'Tranferencia cancelada',
+            text: 'La transferencia a sido cancelada :)',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-      );
+      });
   }
 
   send_transfer_by_code() {
@@ -116,7 +185,20 @@ export class TransactionComponent {
       return;
     }
 
-    this.transactionService
+    /** SWEETALERT PARA CONTROLAR EL ENVIO DE LA TRANSACCION */
+    this.swalWithBootstrapButtons
+      .fire({
+        title: 'Estás seguro?',
+        text: `Deseas enviar $${this.transactionFormCode.value.amount}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.transactionService
       .new_transaction_by_code(this.transactionFormCode?.value)
       .subscribe(
         (resp: any) => {
@@ -136,13 +218,6 @@ export class TransactionComponent {
             });
           } else {
             console.log('TRANSACCION ENVIADA');
-            swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: `${resp.message}`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
           }
         },
         (err) => {
@@ -151,6 +226,25 @@ export class TransactionComponent {
           swal.fire('Error', 'err0r', 'error');
         }
       );
+          this.swalWithBootstrapButtons.fire({
+            title: 'Transferencia enviada exitosamente!',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === swal.DismissReason.cancel
+        ) {
+          this.swalWithBootstrapButtons.fire({
+            title: 'Tranferencia cancelada',
+            text: 'La transferencia a sido cancelada :)',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   }
 
   ngOnInit(): void {
@@ -161,16 +255,14 @@ export class TransactionComponent {
       }
     );
 
-    this.contactUserService
-      .getContactsUser()
-      .subscribe((contacts: any) => {
-        // if (contacts.response.statusCode === ERROR_TYPE.NOTFOUND) {
-        //   console.log('MENSAJE', contacts.response.message);
-        // }
-        // console.log('ERROR', contacts.response)
-        console.log('LISTA DE CONTACTOS', contacts)
-        this.contacts = contacts;
-      });
+    this.contactUserService.getContactsUser().subscribe((contacts: any) => {
+      // if (contacts.response.statusCode === ERROR_TYPE.NOTFOUND) {
+      //   console.log('MENSAJE', contacts.response.message);
+      // }
+      // console.log('ERROR', contacts.response)
+      console.log('LISTA DE CONTACTOS', contacts);
+      this.contacts = contacts;
+    });
 
     // this.userService.getUsers().subscribe((users: UserInterface[]) => {
     //   // console.log('users', users);
