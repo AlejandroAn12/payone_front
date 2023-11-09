@@ -5,9 +5,8 @@ import { BalanceComponent } from './balance/balance.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MovementsComponent } from './movements/movements.component';
-import { SendComponent } from './transaction/send/send.component';
-import { RequestComponent } from './transaction/request/request.component';
 import { DownloadpageComponent } from './downloadpage/downloadpage.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 // Mantenimientos
 
@@ -19,19 +18,13 @@ const childRoutes: Routes = [
     data: { titulo: 'Ajustes de cuenta' },
   },
   {
+    path: 'contacts',
+    component: ContactsComponent
+  },
+  {
     path: 'transfer',
     component: TransactionComponent,
     data: { titulo: 'Busquedas' },
-  },
-  {
-    path: 'transfer/send',
-    component: SendComponent,
-    data: { titulo: 'Enviar' },
-  },
-  {
-    path: 'transfer/request',
-    component: RequestComponent,
-    data: { titulo: 'Solicitar' },
   },
   {
     path: 'activities',

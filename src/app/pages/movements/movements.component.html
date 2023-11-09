@@ -16,14 +16,14 @@
 
 <div class="flex flex-col" *ngIf="hidden_transaction; else content">
     <div class="info mt-7">
-        <h1 class="text-5xl text-center text-gray-600 italic font-semibold">Ups!, sin movimientos</h1>
+        <h1 class="text-center">Ups!, sin movimientos</h1>
         <br>
         <p class=" text-gray-500 text-center italic">Aún no realizas movimientos</p>
     </div>
 
-    <div class="flex flex-grow justify-center" >
-        <div class="w-80">
-            <img src="assets/img/not_found.jpg" class="text-center"  alt="balance">
+    <div class="notfound_data">
+        <div class="img_notfound">
+            <img src="assets/img/not_found.jpg" alt="balance">
             <!-- <i class="fa-solid fa-wallet text-[#41d17d] text-8xl"></i> -->
         </div>
     </div>
@@ -32,10 +32,10 @@
 <ng-template #content>
     <div class="filters buttons">
         <label for="filters">Filters</label>
-        <select name="filters" id="filters">
-            <option value="">All</option>
-            <option value="">Egresos</option>
-            <option value="">Ingresos</option>
+        <select [(ngModel)]="opcionSeleccionada" (change)="cargarDatos()" name="filters" id="filters">
+            <option value="all">All</option>
+            <option value="egresos">Egresos</option>
+            <option value="ingresos">Ingresos</option>
             
         </select>
     </div>
@@ -57,20 +57,27 @@
             <th scope="col">N° Transaccion</th>
             <th scope="col">Monto</th>
             <th scope="col">Descripción</th>
-            <th scope="col">Tipo de movimiento</th>
             <th scope="col">Fecha de transacción</th>
-            <th scope="col">Comprobante</th>
+            <th scope="col" style="text-align: center;">Ver detalle</th>
+
+            <!-- <th scope="col">Comprobante</th> -->
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let egreso of egresos">
+            <tr *ngFor="let dato of datos">
+                <th scope="row">{{dato.transaction_id}}</th>
+                <td>${{dato.amount}}</td>
+                <td>{{dato.comment}}</td>
+                <td>{{dato.createdDate}}</td>
+                <td style="text-align: center;"><a routerLink="/"><i class="fa-solid fa-eye"></i></a></td>
+          <!-- <tr *ngFor="let egreso of egresos">
             <th scope="row">{{egreso.transaction_id}}</th>
             <td>${{egreso.amount}}</td>
             <td>{{egreso.comment}}</td>
             <td>{{egreso.type_movement}}</td>
-            <td>{{egreso.createdDate}}</td>
-            <td><button class="btn" (click)="downloadPdf(egreso.transaction_id)"><i class="fa-solid fa-file-arrow-down text-2xl"
-                style="color: #2bdec9;"></i></button></td>
+            <td>{{egreso.createdDate}}</td> -->
+            <!-- <td><button class="btn" (click)="downloadPdf(egreso.transaction_id)"><i class="fa-solid fa-file-arrow-down text-2xl"
+                style="color: #2bdec9;"></i></button></td> -->
           </tr>
         </tbody>
       </table>

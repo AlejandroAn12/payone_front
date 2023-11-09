@@ -185,6 +185,16 @@ body {
     color: #fff;
   }
   
+  .dashboard-cards{
+    display: flex;
+    background: #5039eb;
+  }
+
+  .card-dash{
+    margin: 10px;
+    box-shadow: #007bff;
+  }
+  
 
   /* TRANSFER */
 
@@ -234,4 +244,13 @@ body {
 
 #filters{
   margin: 5px;
+}
+
+.notfound_data{
+  position: relative;
+  width: 100%;
+}
+
+.img_notfound{
+  text-align: center;
 }

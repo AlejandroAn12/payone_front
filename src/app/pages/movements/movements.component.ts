@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Socket, io } from 'socket.io-client';
 import { Egresos } from 'src/app/interfaces/egresos.interface';
 import { Ingresos } from 'src/app/interfaces/ingresos.interface';
 import { Transaction } from 'src/app/interfaces/transaction.interface';
@@ -28,6 +27,19 @@ export class MovementsComponent implements OnInit {
   public egresos: Egresos[] = [];
   public ingresos: Ingresos[] = [];
   public user!: User;
+  public data: Transaction[] = [];
+  limit : number = 4;
+   offset : number = 0;
+
+  opcionSeleccionada!: string;
+  datos: any;
+
+  opcionesUrl: { [key: string]: string }  = 
+    {
+    all: `${base_url}/transactions/my-transaction?limit=${this.limit}&offset=${this.offset}`,
+    egresos: `${base_url}/transactions/my-transaction-outgoing`,
+    ingresos: `${base_url}/transactions/my-transaction-incoming`
+    };
 
   constructor(
     private balanceService: BalanceService,
@@ -41,11 +53,13 @@ export class MovementsComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.getAllTransactions();
+    // this.getAllTransactions();
+    this.cargarDatos();
 
     this.route.params.subscribe((params) => {
       const id = params['id'];
-      this.downloadPdf(id);
+      //TODO: PILAS
+      // this.downloadPdf(id);
     });
     // this.getAllTransactions();
     this.balanceService.getBalanceUserLogged().subscribe(
@@ -60,38 +74,38 @@ export class MovementsComponent implements OnInit {
     // throw new Error('Method not implemented.');
   }
 
-  getAllTransactions() {
-    // this.hidden_transaction = true;
-    this.transactionService.getUserTransactions().subscribe((data: any) => {
-      // console.log(this.egresos.length === 0);
-      if (
-        data.transactions.egresos.length === 0 &&
-        data.transactions.ingresos.length === 0
-      ) {
-        this.hidden_transaction = true;
-      }
+  cargarDatos() {
+    const url = this.opcionesUrl[this.opcionSeleccionada];
+    this.transactionService.getAllTransactions(url)
+      .subscribe((data: any) => {
+        console.log('DATOS OPCION', data)
+        if (
+            data.transactions.length === 0
+          ) {
+            this.hidden_transaction = true;
+          }
 
-      this.egresos = data.transactions.egresos.type_movement;
-
-      this.egresos = data.transactions.egresos;
-      this.ingresos = data.transactions.ingresos;
-
-      console.log(data);
-      console.log(
-        'egresos',
-        this.egresos,
-        'ingresos',
-        this.ingresos,
-        'count',
-        this.count,
-
-        data.transactions.egresos.type_movement
-      );
-    });
+        this.datos = data.transactions;
+      });
   }
 
-  downloadPdf(transactionId: string): void {
-    // Realiza una llamada HTTP para obtener el PDF del backend
-    this.transactionService.downloadPdf(transactionId);
-  }
+
+//   getAllTransactions() {
+//     this.transactionService.getUserTransactions().subscribe((data: any) => {
+
+//       if (
+//         data.transactions.length === 0
+//       ) {
+//         this.hidden_transaction = true;
+//       }
+
+//       this.data = data.transactions;
+//     });
+//   }
+
+  //TODO: HABILITAR CUANDO SE SELCIONE POR ID DE TRANSACCION
+  // downloadPdf(transactionId: string): void {
+  //   // Realiza una llamada HTTP para obtener el PDF del backend
+  //   this.transactionService.downloadPdf(transactionId);
+  // }
 }

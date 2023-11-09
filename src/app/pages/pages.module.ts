@@ -10,8 +10,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { PagesComponent } from './pages.component';
 import { MovementsComponent } from './movements/movements.component';
-import { SendComponent } from './transaction/send/send.component';
-import { RequestComponent } from './transaction/request/request.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 
 
@@ -23,8 +22,7 @@ import { RequestComponent } from './transaction/request/request.component';
     TransactionComponent,
     MovementsComponent,
     ProfileComponent,
-    SendComponent,
-    RequestComponent
+    ContactsComponent
   ],
   imports: [
     BrowserModule,

@@ -4,10 +4,10 @@ export interface Transaction {
   receiver?: any;
   comment?: any;
   sender?: any;
-  type_movement?: any;
   count?: number;
   pdfFileName?: any;
   code?: any;
+  createdDate?: Date;
   ingresos?: [];
   egresos?: [];
   transactions?: any;

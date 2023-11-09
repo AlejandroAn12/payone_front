@@ -5,12 +5,9 @@ import { environment } from 'src/environments/environments';
 import { Transaction } from '../interfaces/transaction.interface';
 import * as moment from 'moment';
 import {format} from 'date-fns'
-import { Observable, timestamp } from 'rxjs';
 
 
 const base_url = environment.base_url;
-
-
 
 
 @Injectable({
@@ -20,8 +17,8 @@ export class TransactionService {
   // private date = new Date();
   public timestamp = format(new Date(), 'yyyyMMdd_HHmmss'); // Genera un timestamp único en formato "YYYYMMDD_HHmmss"
   private pdfName = `transaccion_${this.timestamp}`; // Nombre del archivo PDF
-
-  private transaction!: Transaction;
+   limit : number = 4;
+   offset : number = 0;
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -36,8 +33,13 @@ export class TransactionService {
     );
   }
 
+
+  getAllTransactions(url :string){
+    return this.http.get<any[]>(url);
+  }
+
   getUserTransactions() {
-    return this.http.get(`${base_url}/transactions/my-transaction`);
+    return this.http.get(`${base_url}/transactions/my-transaction?limit=${this.limit}&offset=${this.offset}`);
   }
 
   getTransactionById(id: string) {

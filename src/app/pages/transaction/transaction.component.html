@@ -3,13 +3,42 @@
     Nueva Transferencia
   </div>
   <div class="card-body">
-
+    
     <div class="flex flex-grow justify-center">
+      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo contacto</button>
       <button (click)="toggleFormulario('send_email')"
-        class="btn btn-color-basic">Send to email</button>
+        class="btn btn-color-basic">Por contacto</button>
       <button (click)="toggleFormulario('send_codigo')"
-        class="btn btn-color-basic">Send to code</button>
+        class="btn btn-color-basic">Por código</button>
     </div>
+
+    <!-- Vertically centered modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir contacto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">ID:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <!-- <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div> -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Añadir</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="row flex text-center">
       <div>
