@@ -9,7 +9,9 @@ import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { BalanceService } from 'src/app/services/balance.service';
 import { TransactionService } from 'src/app/services/transactions.service';
+import { ERROR_TYPE } from 'src/app/utils/ERRORS_TYPE.enum';
 import { environment } from 'src/environments/environments';
+import Swal from 'sweetalert2';
 
 const base_url = environment.base_url;
 
@@ -29,9 +31,11 @@ export class MovementsComponent implements OnInit {
   public user!: User;
   public data: Transaction[] = [];
   limit : number = 4;
-   offset : number = 0;
+  offset : number = 0;
+  startDate !: string;
+  endDate !: string;
 
-  opcionSeleccionada!: string;
+  opcionSeleccionada: string = 'all';
   datos: any;
 
   opcionesUrl: { [key: string]: string }  = 
@@ -55,6 +59,7 @@ export class MovementsComponent implements OnInit {
     
     // this.getAllTransactions();
     this.cargarDatos();
+    this.findByDate();
 
     this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -87,6 +92,29 @@ export class MovementsComponent implements OnInit {
 
         this.datos = data.transactions;
       });
+  }
+
+  findByDate(){
+    const params = {startDate: this.startDate, endDate: this.endDate};
+    this.transactionService.getTransactionByDateRange(params.startDate, params.endDate).subscribe((results: any) => {
+      
+      // console.log('DATE', results.transactions.message);
+      if(results.transactions.status === ERROR_TYPE.NOTFOUND){
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: `${results.transactions.name}`,
+          text: `${results.transactions.message}`,
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      }
+      this.datos = results.transactions;
+    },(err) => {
+      console.error(err)
+      // this.loading = false;
+      // Swal.fire('Error', err.error, 'error');
+    })
   }
 
 

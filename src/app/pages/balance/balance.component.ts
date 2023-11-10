@@ -30,7 +30,7 @@ export class BalanceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllTransactions();
+    // this.getAllTransactions();
     this.balanceService.getBalanceUserLogged().subscribe(
       (resp: any) => {
         // console.log('BALANCE', resp)
@@ -43,21 +43,21 @@ export class BalanceComponent implements OnInit {
     // throw new Error('Method not implemented.');
   }
 
-  getAllTransactions() {
-    this.transactionService.getUserTransactions().subscribe((data: any) => {
-      this.egresos = data.transactions.egresos;
-      this.ingresos = data.transactions.ingresos;
-      this.count = data.transactions.count;
+  // getAllTransactions() {
+  //   this.transactionService.getUserTransactions().subscribe((data: any) => {
+  //     this.egresos = data.transactions.egresos;
+  //     this.ingresos = data.transactions.ingresos;
+  //     this.count = data.transactions.count;
 
-      console.log(data);
-      console.log(
-        'egresos',
-        this.egresos,
-        'ingresos',
-        this.ingresos,
-        'count',
-        this.count
-      );
-    });
-  }
+  //     console.log(data);
+  //     console.log(
+  //       'egresos',
+  //       this.egresos,
+  //       'ingresos',
+  //       this.ingresos,
+  //       'count',
+  //       this.count
+  //     );
+  //   });
+  // }
 }

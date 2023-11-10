@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environments';
 import { Transaction } from '../interfaces/transaction.interface';
 import * as moment from 'moment';
-import {format} from 'date-fns'
+import {format} from 'date-fns';
 
 
 const base_url = environment.base_url;
@@ -17,8 +17,8 @@ export class TransactionService {
   // private date = new Date();
   public timestamp = format(new Date(), 'yyyyMMdd_HHmmss'); // Genera un timestamp único en formato "YYYYMMDD_HHmmss"
   private pdfName = `transaccion_${this.timestamp}`; // Nombre del archivo PDF
-   limit : number = 4;
-   offset : number = 0;
+  offset: number = 0;
+  limit: number = 0;
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -40,6 +40,10 @@ export class TransactionService {
 
   getUserTransactions() {
     return this.http.get(`${base_url}/transactions/my-transaction?limit=${this.limit}&offset=${this.offset}`);
+  }
+
+  getTransactionByDateRange(startDate: string, endDate: string){
+    return this.http.get(`${base_url}/transactions/my-transaction-date?startDate=${startDate}&endDate=${endDate}`);
   }
 
   getTransactionById(id: string) {
