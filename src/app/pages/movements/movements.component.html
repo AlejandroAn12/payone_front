@@ -66,20 +66,12 @@
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let dato of datos">
+            <tr *ngFor="let dato of datos" (click)="getTransactionByID(dato.transaction_id)">
                 <th scope="row">{{dato.transaction_id}}</th>
                 <td>${{dato.amount}}</td>
                 <td>{{dato.comment}}</td>
                 <td>{{dato.createdDate}}</td>
                 <td style="text-align: center;"><a class="btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-eye"></i></a></td>
-          <!-- <tr *ngFor="let egreso of egresos">
-            <th scope="row">{{egreso.transaction_id}}</th>
-            <td>${{egreso.amount}}</td>
-            <td>{{egreso.comment}}</td>
-            <td>{{egreso.type_movement}}</td>
-            <td>{{egreso.createdDate}}</td> -->
-            <!-- <td><button class="btn" (click)="downloadPdf(egreso.transaction_id)"><i class="fa-solid fa-file-arrow-down text-2xl"
-                style="color: #2bdec9;"></i></button></td> -->
           </tr>
         </tbody>
       </table>
@@ -89,14 +81,30 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir contacto</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">DETALLE DE MOVIMIENTO</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form *ngIf="dato_seleccionado">
                 <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">ID:</label>
-                  <input type="text" class="form-control" id="recipient-name">
+                  <label for="id" class="col-form-label">N° transacción:</label>
+                  <input type="text" disabled class="form-control" id="id" [(ngModel)]="dato_seleccionado.transaction_id" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="mb-3">
+                  <label for="createdDate" class="col-form-label">Fecha:</label>
+                  <input type="text" disabled class="form-control" id="createdDate" [(ngModel)]="dato_seleccionado.createdDate" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="mb-3">
+                  <label for="receiver" class="col-form-label">Cuenta beneficiario:</label>
+                  <input type="text" disabled class="form-control" id="receiver" [(ngModel)]="dato_seleccionado.receiver.names"  [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="mb-3">
+                  <label for="amount" class="col-form-label">Monto transferido:</label>
+                  <input type="text" disabled class="form-control" id="amount" [(ngModel)]="dato_seleccionado.amount" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="col-form-label">Descripción:</label>
+                  <input type="text" disabled class="form-control" id="description" [(ngModel)]="dato_seleccionado.comment" [ngModelOptions]="{standalone: true}">
                 </div>
                 <!-- <div class="mb-3">
                   <label for="message-text" class="col-form-label">Message:</label>
@@ -105,6 +113,7 @@
               </form>
             </div>
             <div class="modal-footer">
+              <button class="btn btn-success" (click)="downloadPdf(dato_seleccionado.transaction_id)"><i class="fa-solid fa-print"></i></button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
               <button type="button" class="btn btn-primary">Añadir</button>
             </div>

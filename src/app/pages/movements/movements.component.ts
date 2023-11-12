@@ -37,8 +37,9 @@ export class MovementsComponent implements OnInit {
 
   opcionSeleccionada: string = 'all';
   datos: any;
+  dato_seleccionado: any;
 
-  opcionesUrl: { [key: string]: string }  = 
+  opcionesUrl: { [key: string]: string }  =
     {
     all: `${base_url}/transactions/my-transaction?limit=${this.limit}&offset=${this.offset}`,
     egresos: `${base_url}/transactions/my-transaction-outgoing`,
@@ -56,7 +57,7 @@ export class MovementsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     // this.getAllTransactions();
     this.cargarDatos();
     this.findByDate();
@@ -97,7 +98,7 @@ export class MovementsComponent implements OnInit {
   findByDate(){
     const params = {startDate: this.startDate, endDate: this.endDate};
     this.transactionService.getTransactionByDateRange(params.startDate, params.endDate).subscribe((results: any) => {
-      
+
       // console.log('DATE', results.transactions.message);
       if(results.transactions.status === ERROR_TYPE.NOTFOUND){
         Swal.fire({
@@ -117,6 +118,15 @@ export class MovementsComponent implements OnInit {
     })
   }
 
+  getTransactionByID(id: string){
+    this.transactionService.getTransactionByID(id).subscribe((result: any) => {
+      this.dato_seleccionado = result;
+      console.log('DATO SELECCIONADO', this.dato_seleccionado)
+      // console.log('DATO SELECCIONADO', result)
+
+    })
+  }
+
 
 //   getAllTransactions() {
 //     this.transactionService.getUserTransactions().subscribe((data: any) => {
@@ -132,8 +142,15 @@ export class MovementsComponent implements OnInit {
 //   }
 
   //TODO: HABILITAR CUANDO SE SELCIONE POR ID DE TRANSACCION
-  // downloadPdf(transactionId: string): void {
-  //   // Realiza una llamada HTTP para obtener el PDF del backend
-  //   this.transactionService.downloadPdf(transactionId);
-  // }
+  downloadPdf(transactionId: string): void {
+    // Realiza una llamada HTTP para obtener el PDF del backend
+    this.transactionService.downloadPdf(transactionId);
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: `PDF DESCARGADO`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
 }

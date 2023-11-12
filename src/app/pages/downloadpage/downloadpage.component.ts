@@ -20,6 +20,6 @@ export class DownloadpageComponent {
 
   downloadPdf(id: string): void {
     // Realiza una llamada HTTP para obtener el PDF del backend
-    this.transactionService.getTransactionById(id);
+    this.transactionService.getPDFTransactionById(id);
   }
 }

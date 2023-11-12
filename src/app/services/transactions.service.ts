@@ -46,7 +46,11 @@ export class TransactionService {
     return this.http.get(`${base_url}/transactions/my-transaction-date?startDate=${startDate}&endDate=${endDate}`);
   }
 
-  getTransactionById(id: string) {
+  getTransactionByID(id: string){
+    return this.http.get(`${base_url}/transactions/id/${id}`)
+  }
+
+  getPDFTransactionById(id: string) {
     return this.http.get(`${base_url}/transactions/${id}/download`);
   }
 
