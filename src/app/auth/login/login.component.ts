@@ -33,27 +33,27 @@ export class LoginComponent implements AfterViewInit {
         'test@test.com',
         [Validators.required, Validators.email],
       ],
-      password: ['test1234', [Validators.required, Validators.minLength(3)]],
+      password: ['Test1234', [Validators.required, Validators.minLength(3)]],
     });
   }
 
   ngAfterViewInit(): void {
-    this.autoreproducirVideo();
+    // this.autoreproducirVideo();
   }
 
-  autoreproducirVideo() {
-    const videoElement: HTMLVideoElement = this.miVideo.nativeElement;
+  // autoreproducirVideo() {
+  //   const videoElement: HTMLVideoElement = this.miVideo.nativeElement;
   
-    // Verifica si el video está cargado antes de intentar reproducirlo
-    if (videoElement.readyState >= 2) {
-      videoElement.play();
-    } else {
-      // Espera a que el evento 'loadeddata' se dispare antes de intentar reproducir
-      videoElement.addEventListener('loadeddata', () => {
-        videoElement.play();
-      });
-    }
-  }
+  //   // Verifica si el video está cargado antes de intentar reproducirlo
+  //   if (videoElement.readyState >= 2) {
+  //     videoElement.play();
+  //   } else {
+  //     // Espera a que el evento 'loadeddata' se dispare antes de intentar reproducir
+  //     videoElement.addEventListener('loadeddata', () => {
+  //       videoElement.play();
+  //     });
+  //   }
+  // }
 
   login() {
     this.loading = true;

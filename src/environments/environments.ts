@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   // base_url : `https://payone-api.onrender.com/pay/v1`
   // base_url: `http://192.168.0.102:3000/pay/v1`,
   base_url: `https://quipay-backend.onrender.com/pay/v1`,
