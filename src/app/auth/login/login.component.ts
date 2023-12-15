@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
@@ -11,7 +11,11 @@ import swal from 'sweetalert2';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
+
+  @ViewChild('miVideo')
+  miVideo!: ElementRef;
+  
   loading = false;
 
   public form_submitted = false;
@@ -31,6 +35,24 @@ export class LoginComponent {
       ],
       password: ['Test1234', [Validators.required, Validators.minLength(3)]],
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.autoreproducirVideo();
+  }
+
+  autoreproducirVideo() {
+    const videoElement: HTMLVideoElement = this.miVideo.nativeElement;
+  
+    // Verifica si el video está cargado antes de intentar reproducirlo
+    if (videoElement.readyState >= 2) {
+      videoElement.play();
+    } else {
+      // Espera a que el evento 'loadeddata' se dispare antes de intentar reproducir
+      videoElement.addEventListener('loadeddata', () => {
+        videoElement.play();
+      });
+    }
   }
 
   login() {

@@ -20,13 +20,13 @@ export class RegisterComponent {
   public form_submitted = false;
 
   public registerForm = this.fb.group({
-    names: ['USUARIO', [Validators.required, Validators.minLength(3)]],
-    surnames: ['TEST', [Validators.required, Validators.minLength(3)]],
-    dni: ['0803042787', [Validators.required, Validators.minLength(10)]],
-    phone: ['0995243614', [Validators.required]],
-    email: ['test@tets.com', [Validators.required, Validators.email]],
-    password: ['Test1234', [Validators.required, Validators.minLength(3)]],
-    repeat_password: ['Test1234', [Validators.required, Validators.minLength(3)]],
+    names: ['', [Validators.required, Validators.minLength(3)]],
+    surnames: ['', [Validators.required, Validators.minLength(3)]],
+    dni: ['', [Validators.required, Validators.minLength(10)]],
+    phone: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(3)]],
+    repeat_password: ['', [Validators.required, Validators.minLength(3)]],
     terms: [true, Validators.required],
   }, {
     validators: this.passwords_equals('password', 'repeat_password')
