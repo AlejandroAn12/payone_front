@@ -30,10 +30,10 @@ export class LoginComponent implements AfterViewInit {
   ) {
     this.loginForm = this.fb.group({
       email: [
-        'test@incodek.com',
+        '',
         [Validators.required, Validators.email],
       ],
-      password: ['Test1234', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
