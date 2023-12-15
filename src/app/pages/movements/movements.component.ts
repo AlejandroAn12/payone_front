@@ -84,7 +84,7 @@ export class MovementsComponent implements OnInit {
     const url = this.opcionesUrl[this.opcionSeleccionada];
     this.transactionService.getAllTransactions(url)
       .subscribe((data: any) => {
-        console.log('DATOS OPCION', data)
+        // console.log('DATOS OPCION', data)
         if (
             data.transactions.length === 0
           ) {
@@ -121,7 +121,7 @@ export class MovementsComponent implements OnInit {
   getTransactionByID(id: string){
     this.transactionService.getTransactionByID(id).subscribe((result: any) => {
       this.dato_seleccionado = result;
-      console.log('DATO SELECCIONADO', this.dato_seleccionado)
+      // console.log('DATO SELECCIONADO', this.dato_seleccionado)
       // console.log('DATO SELECCIONADO', result)
 
     })
