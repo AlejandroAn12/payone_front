@@ -12,11 +12,11 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
-      // console.log('PASO POR EL GUARD')
+      console.log('PASO POR EL GUARD')
       return this.authService.validarToken()
       .pipe(tap(isLogged => {
         if (!isLogged) {
-          console.log('EL token ha expiriado')
+          console.log('EL token ha expirado')
           this.router.navigateByUrl('/login')
         }
       })) ;

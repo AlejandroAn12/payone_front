@@ -23,7 +23,7 @@ body {
 
 /* *******************navbar***************** */
 .navbar {
-    background-color: #4026d1;
+    background-color: #8317D1;
     position: fixed;
     top: 0;
     left: 0;
@@ -59,7 +59,7 @@ body {
     color: #fff;
 }
 
-/* *************LOGIN************** */
+/* *************LOGIN-REGISTER************** */
 
 .container {
     height: 100vh;
@@ -81,14 +81,16 @@ body {
 
 
   .btn-login{
-    background: #341BCF;
+    background: #8317D1;
+    width: 100%;
+    font-weight: bold;
+    height: 50;
     color: #fff;
-    width: auto;
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1); 
   }
 
   .btn-login:hover{
-    background: #5039eb;
+    background: #8b3cc4;
     color: #fff;
   }
 
@@ -96,8 +98,20 @@ body {
     margin-left: 30%;
   }
 
+  .forgot-password{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .form-floating{
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
   a{
+    font-size: 0.9rem;
     font-weight: 600;
+    color: #8317D1;
     text-decoration: none;
   }
 
@@ -125,7 +139,28 @@ body {
 
   img {
     width: 50%;
+    margin-bottom: 5%;
   }
+
+.title-register{
+  color: #43FF99;
+  font-weight: 600;
+}
+
+.btn-register{
+  background: #43FF99;
+  font-weight: bold;
+    width: 100%;
+    height: 50;
+    color: #8317D1;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.btn-register:hover{
+  background: #2bf385;
+    color: #8317D1;
+}
+
 
 
   /* sidebar */
@@ -255,28 +290,25 @@ body {
   text-align: center;
 }
 
-
-.video-container {
-  position: relative;
-  background: #662ec0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-video#video-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: white;
+  display: flex;
+  height: 100vh;
+}
+
+.column{
+  flex: 1;
+  display: flex; /* Configura las columnas como contenedores flexibles */
+  flex-direction: column; /* Alinea el contenido verticalmente */
+  justify-content: center; /* Centra verticalmente el contenido */
+  align-items: center; /* Centra horizontalmente el contenido */
   padding: 20px;
+}
+
+.column_login{
+  align-content: flex-start;
+  background-color: #fff;
+}
+
+.column_register{
+  background: linear-gradient(180deg, #8317D1 0%, rgba(131, 23, 209, 0) 100%)
 }

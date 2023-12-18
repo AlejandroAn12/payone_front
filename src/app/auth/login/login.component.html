@@ -1,57 +1,188 @@
 <div *ngIf="loading; else content">
   <app-splashcreen></app-splashcreen>
-<!-- <div
-  class="fixed inset-0 flex items-center justify-center h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-  role="status">
-  <span
-    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-</div> -->
 </div>
 
 <ng-template #content>
-
-  <div class="video-container">
+  <!-- <div class="video-container">
     <video #miVideo autoplay muted loop id="video-background">
       <source src="../../../assets/videos/video_back.mp4" type="video/mp4">
       Tu navegador no soporta el elemento de video.
     </video>
-    <div class="content">
-      <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-        <div class="col-md-3">
+     CONTENIDO 
+  </div> -->
+
+  <div class="content">
+    <div class="column column_login">
+      <div
+        class="container d-flex justify-content-center align-items-center"
+        style="height: 100vh"
+      >
+        <div class="col-md-5">
           <form (ngSubmit)="login()" [formGroup]="loginForm">
             <div class="header text-center">
-              <img src="assets/img/quipay_banner_3.svg" alt="banner" class="img-fluid">
-                  <div class="title-login">
-                      <p>Welcome</p>
-                  </div>
-                  <div class="subtitle-login">
-                      <p>Sign in to your QuiPay! account</p>
-                  </div>
+              <img src="assets/img/Logov1.svg" alt="banner" class="img-fluid" />
+              <div class="title-login">
+                <p>Welcome</p>
+              </div>
+              <div class="subtitle-login">
+                <p>Sign in to your QuiPay! account</p>
+              </div>
             </div>
-            <div class="form-floating mb-3">
-              <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <div class="form-floating">
+              <input
+                formControlName="email"
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+              />
               <label for="floatingInput">Email address</label>
             </div>
-            <div class="forwod-password">
-              <a href="">¿Forgot your password?</a>
-            </div>
-      
+
             <div class="form-floating">
-              <input formControlName="email" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+              <input
+                formControlName="password"
+                type="password"
+                class="form-control"
+                id="floatingPassword"
+                placeholder="Password"
+              />
               <label for="floatingPassword">Password</label>
             </div>
-          
+
+            <div class="forgot-password">
+              <a href="#">¿Forgot your password?</a>
+            </div>
+
             <div class="form-group">
-              <button type="submit" [disabled]="loginForm.invalid" class="btn btn-login">Sign in</button>
-              <!-- <a class="info-register" routerLink="/register">Dont have account?</a> -->
+              <!-- [disabled]="loginForm.invalid" -->
+              <button type="submit" [disabled]="loginForm.invalid"  class="btn btn-login">Sign in</button>
             </div>
           </form>
         </div>
       </div>
     </div>
+    <div class="column column_register">
+      <h2 class="title-register">Crea tu cuenta ¡Ahora!</h2>
+      <div class="col-md-5">
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+
+          <div class="form-floating">
+            <input
+              formControlName="names"
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Pablo"
+            />
+            <label for="floatingInput">Names</label>
+          </div>
+
+          <div class="form-floating">
+            <input
+              formControlName="surnames"
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Alborada Casimiro"
+            />
+            <label for="floatingInput">Surnames</label>
+          </div>
+
+          <div class="form-floating">
+            <input
+              formControlName="dni"
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="09887744545"
+            />
+            <label for="floatingInput">Dni</label>
+          </div>
+
+          <div class="form-floating">
+            <input
+              formControlName="phone"
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="+593"
+            />
+            <label for="floatingInput">Phone</label>
+          </div>
+
+          <div class="form-floating">
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+
+          <div class="form-floating">
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+
+          <div class="form-floating">
+            <input
+              formControlName="repeat-password"
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Repeat Password</label>
+          </div>
+
+          <div class="form-group">
+            <!-- [disabled]="loginForm.invalid" -->
+            <button type="submit" [disabled]="loginForm.invalid"  class="btn btn-login">Register now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+      <div class="col-md-3">
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+          <div class="header text-center">
+            <img src="assets/img/Logov1.svg" alt="banner" class="img-fluid">
+                <div class="title-login">
+                    <p>Welcome</p>
+                </div>
+                <div class="subtitle-login">
+                    <p>Sign in to your QuiPay! account</p>
+                </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="forwod-password">
+            <a href="">¿Forgot your password?</a>
+          </div>
+    
+          <div class="form-floating">
+            <input formControlName="email" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+        
+          <div class="form-group">
+            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-login">Sign in</button>
+          </div>
+        </form>
+      </div>
+    </div> -->
   </div>
-  
-
 </ng-template>
+<!-- <a class="info-register" routerLink="/register">Dont have account?</a> -->
 <!-- <app-footer></app-footer> -->
-

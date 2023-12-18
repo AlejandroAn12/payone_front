@@ -11,10 +11,7 @@ import swal from 'sweetalert2';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements AfterViewInit {
-
-  @ViewChild('miVideo')
-  miVideo!: ElementRef;
+export class LoginComponent  {
   
   loading = false;
 
@@ -30,30 +27,13 @@ export class LoginComponent implements AfterViewInit {
   ) {
     this.loginForm = this.fb.group({
       email: [
-        'test@test.com',
+        '',
         [Validators.required, Validators.email],
       ],
-      password: ['Test1234', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
-  ngAfterViewInit(): void {
-    // this.autoreproducirVideo();
-  }
-
-  // autoreproducirVideo() {
-  //   const videoElement: HTMLVideoElement = this.miVideo.nativeElement;
-  
-  //   // Verifica si el video está cargado antes de intentar reproducirlo
-  //   if (videoElement.readyState >= 2) {
-  //     videoElement.play();
-  //   } else {
-  //     // Espera a que el evento 'loadeddata' se dispare antes de intentar reproducir
-  //     videoElement.addEventListener('loadeddata', () => {
-  //       videoElement.play();
-  //     });
-  //   }
-  // }
 
   login() {
     this.loading = true;

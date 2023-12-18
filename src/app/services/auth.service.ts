@@ -29,7 +29,6 @@ export class AuthService {
 
     return this.http.get(`${base_url}/authentication/check-status`).pipe(
       map((resp: any) => {
-        // console.log(resp)
         const { names, surnames } = resp.user;
         this.user = new User(names, surnames);
         this.saveToken(resp.token);
@@ -52,7 +51,7 @@ export class AuthService {
   login_user(formDATA: LoginForm) {
     return this.http.post(`${base_url}/authentication/login`, formDATA).pipe(
       map((resp: any) => {
-        console.log('RESPUESTA DESDE EL SERVICIO DE AUTH =>>', resp)
+        // console.log('RESPUESTA DESDE EL SERVICIO DE AUTH =>>', resp)
         if (resp.status === ERROR_TYPE.UNAUTHORIZED) {
           swal.fire({
             position: 'top-end',
@@ -75,19 +74,12 @@ export class AuthService {
         return true;
       }),
       catchError((error) => {
+        console.error(error)
         return swal.fire({
           icon: "error",
           title: "Oops...",
-          text: `Sin conexión con el servidor, intente más tarde, ${error}`
-          // footer: '<a href="#">Why do I have this issue?</a>'
+          text: `Sin conexión con el servidor, intente más tarde`
         });
-        // swal.fire({
-        //   position: 'top-end',
-        //   icon: 'error',
-        //   title: `${error}`,
-        //   showConfirmButton: false,
-        //   timer: 1500,
-        // });
       })
     );
   }

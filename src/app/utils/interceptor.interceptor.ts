@@ -24,16 +24,17 @@ export class InterceptorService implements HttpInterceptor {
     return next.handle(request)
     .pipe(
       catchError((error: HttpErrorResponse) => {
-        if(error.status === 401){
-          //MANDAMOS EL MENSAJE DE ERROR PERSONALIZADO
-          this.router.navigate(['/login'])
-           Swal.fire({
-            icon: "error",
-            title: "Sesión Expirada",
-            text: `Tu sesión ha expirado vuelve a inciar sesión`
-            // footer: '<a href="#">Why do I have this issue?</a>'
-          });
-        }
+        // if(error.status === 401){
+        //   //MANDAMOS EL MENSAJE DE ERROR PERSONALIZADO
+        //   this.router.navigate(['/login'])
+        //    Swal.fire({
+        //     icon: "error",
+        //     title: "Ooops!!",
+        //     text: "Estamos solventando el problema"
+        //     // text: `Tu sesión ha expirado vuelve a inciar sesión`
+        //     // footer: '<a href="#">Why do I have this issue?</a>'
+        //   });
+        // }
         return throwError(() => new Error('Error'))
       })
     )

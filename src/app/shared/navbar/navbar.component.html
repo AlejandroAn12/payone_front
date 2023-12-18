@@ -1,51 +1,5 @@
-<!-- <nav class="bg-[#ffffff] py-4 px-6 fixed top-0 left-0 w-full z-10 shadow-lg">
-  <div class="container mx-auto flex px-8 xl:px-0">
-    <div class="flex flex-grow items-center">
-      <img class="w-12" src="assets/img/logo.svg" alt="logo">
-    </div>
-    <div class="flex lg:hidden">
-      <img src="assets/img/icon _menu_.svg" onclick="openMenu()" alt="menu">
-    </div>
-    <div id="menu" class="lg:flex hidden flex-grow items-center justify-between absolute lg:relative lg:top-0 top-20
-       left-0 w-full lg:w-auto py-1">
-      <div class="flex flex-col lg:flex-row p-3">
-        <a routerLinkActive="/" routerLink="/"
-          class="lg: mr-7 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold text-gray-600">Inicio</a>
-        <a routerLink="/myaccount/transfer"
-          class="text-gray-600 transition  ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">Transferir</a>
-        <a routerLink="/myaccount/balance"
-          class="text-gray-600 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">Mi fondo</a>
-        <a routerLink="/myaccount/activities"
-          class="text-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">Movimientos</a>
 
-
-      </div>
-      <div class="flex flex-col lg:flex-row text-center items-center">
-
-        <button (click)="mostrarNotificaciones()"
-          class="text-green-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">
-          <i class="fa-solid fa-bell"></i>
-        </button>
-        <span *ngIf="notificacionesPendientes"
-          class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">1</span>
-
-        <app-notification-modal [mostrarModal]="mostrarModal" (cerrarModal)="cerrarNotificaciones()"></app-notification-modal>
-
-        <a routerLink="/myaccount/profile" class="text-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 font-semibold lg: mr-7">
-          <i class="fa-solid fa-gear"></i>
-        </a>
-        <button (click)="logOut()"
-          class=" text-white font-bold  bg-green-400 py-2.5 px-5 rounded-full transition ease-in-out delay-150  border  hover:-translate-y-1 hover:scale-110 hover:bg-transparent hover:text-green-400 hover:border-transparent duration-300 lg: mr-7">
-          CERRAR SESIÓN
-        </button>
-        
-      </div>
-    </div>
-
-  </div>
-</nav> -->
-
-<nav class="navbar  navbar-expand-lg">
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Quipay!</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
