@@ -124,6 +124,7 @@ body {
   }
 
   .title-login{
+    color: #8317D1;
     margin-top: 20px;
     font-size: 1.2rem;
     font-weight: 600;
@@ -131,6 +132,7 @@ body {
 
   .subtitle-login{
     font-weight: 300;
+    color: #8317D1;
   }
 
   .form-group{
@@ -161,6 +163,24 @@ body {
     color: #8317D1;
 }
 
+.p-register{
+  margin-top: 10px;
+  font-style: italic;
+  color: #ebebeb;
+  font-weight: bold;
+}
+
+.register_container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.inputs_container{
+  display: flex;
+  flex-direction:column;
+}
+
 
 
   /* sidebar */
@@ -174,7 +194,7 @@ body {
     background-color: #ebebeb;
     padding-top: 60px;
     z-index: 1; 
-  } */
+  }
 
 #sidebar ul {
     list-style: none;

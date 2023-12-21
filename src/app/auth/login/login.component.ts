@@ -16,8 +16,23 @@ export class LoginComponent  {
   loading = false;
 
   public form_submitted = false;
+  public form_submitted_register = false;
   loginForm: FormGroup;
 
+  //Register Form
+  
+  public registerForm = this.fb.group({
+    names: ['', [Validators.required, Validators.minLength(3)]],
+    surnames: ['', [Validators.required, Validators.minLength(3)]],
+    dni: ['', [Validators.required, Validators.minLength(10)]],
+    phone: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(3)]],
+    repeat_password: ['', [Validators.required, Validators.minLength(3)]],
+    // terms: [true, Validators.required],
+  }, {
+    validators: this.passwords_equals('password', 'repeat_password')
+  });
 
 
   constructor(
@@ -34,6 +49,28 @@ export class LoginComponent  {
     });
   }
 
+  register(){
+    this.form_submitted = true
+    console.log(this.registerForm.value);
+
+    if(this.registerForm.invalid){
+      return;
+    } 
+
+    //Realiza el post
+    this.authService.register_user(this.registerForm.value)
+    .subscribe(resp => {
+      console.log('USUARIO CREADO')
+      console.log(resp)
+    }, (err) => {
+      //Si sucede un error
+      console.warn(err.error.message[0])
+      swal.fire('Error', err.error.message[0], 'error')
+    })
+  }
+
+  
+
 
   login() {
     this.loading = true;
@@ -48,5 +85,44 @@ export class LoginComponent  {
         swal.fire('Error', err.error.message[0], 'error');
       }
     );
+  }
+
+
+  campo_no_valido(campo: string): boolean {
+    if(this.registerForm.get(campo)?.invalid && this.form_submitted){
+      return true;
+      } else {
+        return false;
+      }
+    }
+
+
+  passwords_valid(){
+    const pass1 = this.registerForm.get('password')?.value;
+    const pass2 = this.registerForm.get('repeat_password')?.value;
+
+    if((pass1 !== pass2) && this.form_submitted){
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+
+
+  passwords_equals(pass1Name: string, pass2Name: string){
+    return (formGroup: FormGroup) => {
+
+      const pass1Control = formGroup.get(pass1Name);
+      const pass2Control = formGroup.get(pass2Name);
+
+      if(pass1Control?.value === pass2Control?.value) {
+        pass2Control?.setErrors(null)
+      } else {
+        pass2Control?.setErrors({noEsIgual: true})
+      }
+
+
+    }
   }
 }

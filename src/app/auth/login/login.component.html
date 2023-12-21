@@ -3,13 +3,6 @@
 </div>
 
 <ng-template #content>
-  <!-- <div class="video-container">
-    <video #miVideo autoplay muted loop id="video-background">
-      <source src="../../../assets/videos/video_back.mp4" type="video/mp4">
-      Tu navegador no soporta el elemento de video.
-    </video>
-     CONTENIDO 
-  </div> -->
 
   <div class="content">
     <div class="column column_login">
@@ -63,8 +56,112 @@
       </div>
     </div>
     <div class="column column_register">
+
       <h2 class="title-register">Crea tu cuenta ¡Ahora!</h2>
-      <div class="col-md-5">
+      <p class="p-register">No pierdas tiempo y sé parte de nuestra familia</p>
+
+      <form (ngSubmit)="register()" [formGroup]="registerForm">
+      <div class="register_container">
+          <div class="inputs_container">
+            <div class="form-floating">
+              <input
+                formControlName="names"
+                type="text"
+                class="form-control"
+                id="floatingInput"
+                placeholder="Pablo"
+              />
+              <label for="floatingInput">Names</label>
+            </div>
+          </div>
+
+          <div class="inputs_container">
+            <div class="form-floating">
+              <input
+                formControlName="surnames"
+                type="text"
+                class="form-control"
+                id="floatingInput"
+                placeholder="Alborada Casimiro"
+              />
+              <label for="floatingInput">Surnames</label>
+            </div>
+          </div>
+
+          <div class="inputs_container">
+            <div class="form-floating">
+              <input
+                formControlName="dni"
+                type="text"
+                class="form-control"
+                id="floatingInput"
+                placeholder="09887744545"
+              />
+              <label for="floatingInput">Dni</label>
+            </div>
+          </div>
+
+          <div class="inputs_container">
+            <div class="form-floating">
+              <input
+                formControlName="phone"
+                type="text"
+                class="form-control"
+                id="floatingInput"
+                placeholder="+593"
+              />
+              <label for="floatingInput">Phone</label>
+            </div>
+          </div>
+      </div>
+
+          
+            <div class="form-floating">
+              <input
+                formControlName="email"
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">Email address</label>
+            </div>
+        
+            <div class="register_container">
+              <div class="inputs_container">
+                <div class="form-floating">
+                  <input
+                    formControlName="password"
+                    type="password"
+                    class="form-control"
+                    id="floatingPassword"
+                    placeholder="Password"
+                  />
+                  <label for="floatingPassword">Password</label>
+                </div>
+              </div>
+    
+              <div class="inputs_container">
+                <div class="form-floating">
+                  <input
+                    formControlName="repeat_password"
+                    type="password"
+                    class="form-control"
+                    id="floatingPassword"
+                    placeholder="Password"
+                  />
+                  <label for="floatingPassword">Repeat Password</label>
+                </div>
+              </div>
+            </div>
+          
+        <div class="form-group">
+          <!-- [disabled]="loginForm.invalid" -->
+          <button type="submit" [disabled]="registerForm.invalid"  class="btn btn-login">Register now</button>
+        </div>
+
+      </form>
+      <!-- <div class="col-md-5">
         <form (ngSubmit)="login()" [formGroup]="loginForm">
 
           <div class="form-floating">
@@ -145,11 +242,11 @@
           </div>
 
           <div class="form-group">
-            <!-- [disabled]="loginForm.invalid" -->
+            
             <button type="submit" [disabled]="loginForm.invalid"  class="btn btn-login">Register now</button>
           </div>
         </form>
-      </div>
+      </div> -->
     </div>
     <!-- <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
       <div class="col-md-3">
